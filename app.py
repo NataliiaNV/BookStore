@@ -1,14 +1,16 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, request, redirect, url_for
 
 
 # create a Flask instance
 app = Flask(__name__)
 
-# create a route decorator
+app.config['SECRET_KEY'] = 'my secret key'
 
+# create a route decorator
 @app.route('/')
 def index():
-    return '<h1> Hello World!</h1>'
+    flash('Welcome to our website')
+    return render_template('home.html')
 
 
 @app.errorhandler(404)
