@@ -2,7 +2,7 @@
 This module implements instance of book genre in database
 """
 
-from app import db
+from bookstore_app import db
 
 
 class Genre(db.Model):
@@ -23,11 +23,9 @@ class Genre(db.Model):
         self.name = name
         self.description = description
 
-
     def __repr__(self):
         """
         method gives representation of genres
-
         :return: string with genre id, name, description
         """
         return f"Department(id: {self.id}, name: {self.name}, description: {self.description})"
