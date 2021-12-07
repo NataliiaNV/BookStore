@@ -42,3 +42,4 @@ class Book(db.Model):
                f" publish_date: {self.publish_date}, description: {self.description}, price: {self.price}, rating: {self.rating})"
 
 
+

@@ -6,7 +6,6 @@ from bookstore_app import db
 from bookstore_app.models.book_model import Book
 
 
-
 class Author(db.Model):
     """
         Genre object stands for representation data in authors table.
@@ -23,11 +22,10 @@ class Author(db.Model):
     birth_date = db.Column(db.DateTime)
     book_id = db.relationship('Book', backref='auth', foreign_keys=[Book.author_id])
 
-
-    def __init__(self, name, birth_date, book_id):
+    def __init__(self, name, birth_date):
         self.name = name
         self.birth_date = birth_date
-        self.book_id = book_id
+
 
     def __repr__(self):
         """

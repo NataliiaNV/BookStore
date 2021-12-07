@@ -11,15 +11,15 @@
 
     <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Genres  <a href=" {{ url_for('add_genre') }}" class="btn btn-outline-secondary brn-sm" >Add Genre</a></h1>
+    	<h1 align="center">Authors  <a href=" {{ url_for('add_author') }}" class="btn btn-outline-secondary brn-sm" >Add Author</a></h1>
 
     <table class="table table-hover table-bordered table-striped">
 
-    {% for genre in genres %}
+    {% for auth in authors %}
         <tr>
         <td>
-            {{ genre.id }}.
-            <a href="#">{{ genre.name }} </a> - {{ genre.description }}
+            {{ auth.id }}.
+            <a href="#">{{ auth.name }} </a> - {{ auth.birth_date }}
             <a href="#"
 			   class="btn btn-outline-secondary brn-sm">Edit</a>
             <a href="#"
