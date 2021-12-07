@@ -25,7 +25,7 @@ def populate_database():
     author_1 = Author(name='J. K. Rowling', birth_date=date(1965, 7, 31))
     author_2 = Author(name='F. Scott Fitzgerald', birth_date=date(1896, 9, 24))
     author_3 = Author(name='Jane Austen', birth_date=date(1775, 12, 16))
-    author_4 = Author(name='Brenda Jackson')
+    author_4 = Author(name='Brenda Jackson', birth_date=date(1775, 12, 16))
 
     book_1 = Book(name='Harry Potter and the Philosopher\'s Stone', author_id=1, genre_id=4,
                   publish_date=date(1997, 6, 26),

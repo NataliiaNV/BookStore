@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 db = SQLAlchemy(app)
 
+migrate = Migrate(app, db)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Qazxsw101100!@localhost/bookstore'
 app.config['SECRET_KEY'] = 'my secret key'
 

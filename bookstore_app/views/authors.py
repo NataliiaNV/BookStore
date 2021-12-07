@@ -1,5 +1,5 @@
 """
-This module implements rendering add_genre page
+This module implements rendering add_author page
 """
 
 from flask import render_template, flash
@@ -14,7 +14,7 @@ def edit_authors():
     return render_template('edit_authors.html', authors=authors)
 
 
-@app.route('/add_authors', methods=['GET', 'POST', 'PUT'])
+@app.route('/add_authors', methods=['GET', 'POST'])
 def add_author():
     form = AuthorForm()
 
@@ -25,8 +25,6 @@ def add_author():
         form.name.data = ''
         form.birth_date.data = ''
 
-
-        # add post data to db
         db.session.add(new_auth)
         db.session.commit()
 

@@ -25,7 +25,6 @@ def add_genre():
         form.name.data = ''
         form.description.data = ''
 
-        # add post data to db
         db.session.add(new_genre)
         db.session.commit()
 

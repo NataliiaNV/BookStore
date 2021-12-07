@@ -11,7 +11,7 @@
 
     <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Authors  <a href=" {{ url_for('add_author') }}" class="btn btn-outline-secondary brn-sm" >Add Author</a></h1>
+    	<h1 align="center">Books  <a href=" {{ url_for('add_book') }}" class="btn btn-outline-secondary brn-sm" >Add Book</a></h1>
 	<br/><br/>
     <table class="table table-hover table-bordered table-striped">
 
@@ -24,12 +24,30 @@
                 {{ form.name(class="form-control") }}
                 <br/>
 
-                <label>Birth date (YYYY-MM-DD) </label>
-                {{ form.birth_date(class="form-control") }}
+                {{ form.author_id.label(class="form-label") }}
+                {{ form.author_id(class="form-control") }}
+                <br/>
+
+                {{ form.genre_id.label(class="form-label") }}
+                {{ form.genre_id(class="form-control") }}
                 <br/>
 
 
-                {{ form.submit(class="btn btn-secondary") }}
+                <label>Publish date (YYYY-MM-DD) </label>
+                {{ form.publish_date(class="form-control") }}
+                <br/>
+
+                {{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control") }}
+                <br/>
+
+                {{ form.price.label(class="form-label") }}
+                {{ form.price(class="form-control") }}
+                <br/>
+
+                {{ form.rating.label(class="form-label") }}
+                {{ form.rating(class="form-control") }}
+                <br/>
 
             </form>
 

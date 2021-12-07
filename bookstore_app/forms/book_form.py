@@ -7,7 +7,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 
-class AuthorForm(FlaskForm):
+class BookForm(FlaskForm):
     """
     Custom FlaskForm object for book form.
     """

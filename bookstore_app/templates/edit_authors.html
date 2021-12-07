@@ -19,7 +19,7 @@
         <tr>
         <td>
             {{ auth.id }}.
-            <a href="#">{{ auth.name }} </a> - {{ auth.birth_date }}
+            <a href="#">{{ auth.name }} </a> - {{ auth.birth_date.strftime('%Y.%m.%d') }}
             <a href="#"
 			   class="btn btn-outline-secondary brn-sm">Edit</a>
             <a href="#"
