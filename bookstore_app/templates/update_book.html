@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
+
+    	<h1 align="center">Update author</h1>
+	<br/><br/>
+    <table class="table table-hover table-bordered table-striped">
+
+        <div class="shadow p-3 mb-5 bg-body rounded">
+             <form action="/update_book/{{book_to_update.id}}" method="POST">
+
+                 {{ form.hidden_tag() }}
+
+                 {{ form.name.label(class="form-label") }}
+                 {{ form.name(class="form-control", value=book_to_update.name) }}
+                 <br/>
+                 {{ form.author_id.label(class="form-label") }}
+                 {{ form.author_id(class="form-control", value=book_to_update.author_id) }}
+                 <br/>
+                 {{ form.genre_id.label(class="form-label") }}
+                 {{ form.genre_id(class="form-control", value=book_to_update.genre_id) }}
+                 <br/>
+
+                 <label>Publish date (YYYY-MM-DD) </label>
+                 {{ form.publish_date(class="form-control", value=book_to_update.publish_date.strftime('%Y-%m-%d')) }}
+                 <br/>
+
+                 {{ form.description.label(class="form-label") }}
+                 {{ form.description(class="form-control", value=book_to_update.description) }}
+                 <br/>
+                 {{ form.price.label(class="form-label") }}
+                 {{ form.price(class="form-control", value=book_to_update.price) }}
+                 <br/>
+                 {{ form.rating.label(class="form-label") }}
+                 {{ form.rating(class="form-control", value=book_to_update.rating) }}
+                 <br/>
+
+                {{ form.submit(class="btn btn-secondary") }}
+
+                 <a href="{{ url_for('delete_book', id=book_to_update.id)}}" class="btn btn-danger">Delete</a>
+
+            </form>
+
+        </div>
+
+
+
+   </table>
+
+{% endblock %}
+
+

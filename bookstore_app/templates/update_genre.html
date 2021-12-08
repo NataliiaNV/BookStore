@@ -11,26 +11,26 @@
 
     <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Update author</h1>
+    	<h1 align="center">Update genre</h1>
 	<br/><br/>
     <table class="table table-hover table-bordered table-striped">
 
         <div class="shadow p-3 mb-5 bg-body rounded">
-             <form action="/update_author/{{author_to_update.id}}" method="POST">
+             <form action="/update_genre/{{genre_to_update.id}}" method="POST">
 
                 {{ form.hidden_tag() }}
 
                 {{ form.name.label(class="form-label") }}
-                {{ form.name(class="form-control", value=author_to_update.name) }}
+                {{ form.name(class="form-control", value=genre_to_update.name) }}
                 <br/>
 
-                <label>Birth date (YYYY-MM-DD) </label>
-                {{ form.birth_date(class="form-control", value=author_to_update.birth_date.strftime('%Y-%m-%d')) }}
+                {{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control", value=genre_to_update.description) }}
                 <br/>
 
                 {{ form.submit(class="btn btn-secondary") }}
 
-                 <a href="{{ url_for('delete_author', id=author_to_update.id)}}" class="btn btn-danger">Delete</a>
+                 <a href="{{ url_for('delete_genre', id=genre_to_update.id)}}"  class="btn btn-danger">Delete</a>
 
             </form>
 

@@ -2,7 +2,7 @@
 This module implements rendering add_book page
 """
 
-from flask import render_template, flash
+from flask import render_template, flash, request
 from bookstore_app import app, db
 from bookstore_app.forms.book_form import BookForm
 from bookstore_app.models.book_model import Book
@@ -41,4 +41,50 @@ def add_book():
         flash('Book added successfuly!')
 
     return render_template('add_book.html', form=form)
+
+
+@app.route('/delete_book/<int:id>')
+def delete_book(id):
+    book_to_delete = Book.query.get_or_404(id)
+    form = BookForm()
+
+    try:
+        db.session.delete(book_to_delete)
+        db.session.commit()
+        flash("Genre deleted successfully!")
+        books = Book.query.order_by(Book.id)
+        return render_template('edit_books.html',
+                               form=form,
+                               books=books)
+    except:
+        flash("Oops! There was a problem with deleting book, try again...")
+        return render_template('edit_books.html',
+                               form=form,
+                               books=books)
+
+
+@app.route('/update_book/<int:id>', methods=['GET', 'POST'])
+def update_book(id):
+    form = BookForm()
+    book_to_update = Book.query.get_or_404(id)
+    if request.method == 'POST':
+        book_to_update.name = request.form['name']
+        book_to_update.author_id = request.form['author_id']
+        book_to_update.genre_id = request.form['genre_id']
+        book_to_update.publish_date = request.form['publish_date']
+        book_to_update.description = request.form['description']
+        book_to_update.price = request.form['price']
+        book_to_update.rating = request.form['rating']
+        try:
+            db.session.commit()
+            flash("Book updated successfuly!")
+            return render_template("update_book.html",
+                                   form=form, book_to_update=book_to_update)
+        except:
+            flash("Error! Looks like there was a problem! Try again...")
+            return render_template("update_book.html",
+                                   form=form, book_to_update=book_to_update)
+    else:
+        return render_template("update_book.html",
+                               form=form, book_to_update=book_to_update, id=id)
 

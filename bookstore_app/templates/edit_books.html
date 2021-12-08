@@ -47,9 +47,9 @@
 
              <td class="rightcol"> {{ book.description }} </td>
 
-            <td class="rightcol">  <a href="#"
+            <td class="rightcol">  <a href="{{ url_for('update_book', id=book.id)}}"
 			   class="btn btn-outline-secondary brn-sm">Edit</a> </td>
-             <td class="rightcol">  <a href="#"
+             <td class="rightcol">  <a href="{{ url_for('delete_book', id=book.id)}}"
 			   class="btn btn-outline-danger brn-sm">Delete</a> </td>
 
         </tr>
