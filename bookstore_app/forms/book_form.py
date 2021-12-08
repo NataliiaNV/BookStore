@@ -18,6 +18,6 @@ class BookForm(FlaskForm):
     description = StringField("Book description", validators=[DataRequired()])
     price = StringField("Book price", validators=[DataRequired()])
     rating = StringField("Book rating", validators=[DataRequired()])
-    submit = SubmitField("Add new author")
+    submit = SubmitField("Submit")
 
 

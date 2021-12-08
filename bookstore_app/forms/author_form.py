@@ -13,5 +13,5 @@ class AuthorForm(FlaskForm):
     """
     name = StringField("Author name", validators=[DataRequired()])
     birth_date = StringField("Birth date", validators=[DataRequired()])
-    submit = SubmitField("Add new author")
+    submit = SubmitField("Submit")
 

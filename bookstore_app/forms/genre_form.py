@@ -13,5 +13,5 @@ class GenreForm(FlaskForm):
     """
     name = StringField("Genre name", validators=[DataRequired()])
     description = StringField("Genre description", validators=[DataRequired()])
-    submit = SubmitField("Add new genre")
+    submit = SubmitField("Submit")
 
