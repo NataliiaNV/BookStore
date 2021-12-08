@@ -6,12 +6,23 @@ from flask import render_template, flash, request
 from bookstore_app import app, db
 from bookstore_app.forms.author_form import AuthorForm
 from bookstore_app.models.author_model import Author
+from bookstore_app.models.book_model import Book
+
+
+@app.route('/authors', methods=['GET', 'POST'])
+def authors():
+    page = request.args.get('page', 1, type=int)
+    avg_rate = db.session.query(Author.id, db.func.round(db.func.avg(Book.rating), 2)). \
+        join(Author).group_by(Author.id).all()
+    our_authors = Author.query.order_by(Author.id).paginate(page=page, per_page=5, error_out=False)
+
+    return render_template('authors.html', authors=our_authors, avg_rate=dict(avg_rate))
 
 
 @app.route('/edit_authors', methods=['GET', 'POST'])
 def edit_authors():
-    authors = Author.query.order_by(Author.id)
-    return render_template('edit_authors.html', authors=authors)
+    our_authors = Author.query.order_by(Author.id)
+    return render_template('edit_authors.html', authors=our_authors)
 
 
 @app.route('/add_authors', methods=['GET', 'POST'])
@@ -42,15 +53,15 @@ def delete_author(id):
         db.session.delete(author_to_delete)
         db.session.commit()
         flash("Author deleted successfully!")
-        authors = Author.query.order_by(Author.id)
+        our_authors = Author.query.order_by(Author.id)
         return render_template('edit_authors.html',
                                form=form,
-                               authors=authors)
+                               authors=our_authors)
     except:
         flash("Oops! There was a problem with deleting author, try again...")
         return render_template('edit_authors.html',
                                form=form,
-                               authors=authors)
+                               authors=our_authors)
 
 
 @app.route('/update_author/<int:id>', methods=['GET', 'POST'])
@@ -72,4 +83,3 @@ def update_author(id):
     else:
         return render_template("update_author.html",
                                form=form, author_to_update=author_to_update, id=id)
-

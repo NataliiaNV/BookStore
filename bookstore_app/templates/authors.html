@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
+
+    	<h1 align="center">Authors  </h1>
+
+    <table class="table table-hover table-bordered table-striped">
+        <tr>
+
+           <td> <h5> ID </h5> </td>
+           <td class="rightcol"> <h5>  Name </h5>   </td>
+            <td class="rightcol"> <h5>  Birth Date</h5> </td>
+            <td class="rightcol"> <h5>  Rating </h5>   </td>
+           <td class="rightcol"><h5>  Edit </h5>  </td>
+
+
+        </tr>
+    {% for auth in authors.items %}
+        <tr>
+
+           <td>  {{ auth.id }}. </td>
+           <td class="rightcol">  <a href="#">{{ auth.name }} </a> </td>
+            <td class="rightcol">  {{ auth.birth_date.strftime('%Y.%m.%d') }} </td>
+             <td class="rightcol">   {{ avg_rate[auth.id] }}   </td>
+           <td class="rightcol">  <a href="{{ url_for('update_author', id=auth.id)}}"
+			   class="btn btn-outline-secondary brn-sm">Edit</a> </td>
+
+
+        </tr>
+    {% endfor %}
+    </table>
+        {% for page_num in authors.iter_pages() %}
+            {% if page_num %}
+                {% if authors.page == page_num %}
+                <a class="btn btn-info mb-4" href="{{ url_for('authors', page=page_num) }}">
+                    {{ page_num }}   </a>
+                 {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('authors', page=page_num) }}">
+                    {{ page_num }}   </a>
+                 {% endif %}
+            {% endif %}
+
+        {% endfor %}
+
+
+{% endblock %}
+
+

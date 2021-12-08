@@ -8,10 +8,17 @@ from bookstore_app.forms.book_form import BookForm
 from bookstore_app.models.book_model import Book
 
 
+@app.route('/books', methods=['GET', 'POST'])
+def books():
+    page = request.args.get('page', 1, type=int)
+    our_books = Book.query.order_by(Book.id).paginate(page=page, per_page=2, error_out=False)
+    return render_template('books.html', books=our_books)
+
+
 @app.route('/edit_books', methods=['GET', 'POST'])
 def edit_books():
-    books = Book.query.order_by(Book.name)
-    return render_template('edit_books.html', books=books)
+    our_books = Book.query.order_by(Book.name)
+    return render_template('edit_books.html', books=our_books)
 
 
 @app.route('/add_book', methods=['GET', 'POST'])
@@ -52,15 +59,15 @@ def delete_book(id):
         db.session.delete(book_to_delete)
         db.session.commit()
         flash("Genre deleted successfully!")
-        books = Book.query.order_by(Book.id)
+        our_books = Book.query.order_by(Book.id)
         return render_template('edit_books.html',
                                form=form,
-                               books=books)
+                               books=our_books)
     except:
         flash("Oops! There was a problem with deleting book, try again...")
         return render_template('edit_books.html',
                                form=form,
-                               books=books)
+                               books=our_books)
 
 
 @app.route('/update_book/<int:id>', methods=['GET', 'POST'])

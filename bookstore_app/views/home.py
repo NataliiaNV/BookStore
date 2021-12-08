@@ -10,6 +10,7 @@ from bookstore_app.models.genre_model import Genre
 
 @app.route('/')
 @app.route('/home')
+@app.route('/genres')
 def index():
     """
     Returns rendered `home.html` template for url route `/` , `/home`
