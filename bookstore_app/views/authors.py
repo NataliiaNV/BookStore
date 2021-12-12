@@ -3,10 +3,10 @@ This module implements rendering author page
 """
 
 from flask import render_template, flash, request
-from bookstore import app, db
-from forms.author_form import AuthorForm
-from models.author_model import Author
-from models.book_model import Book
+from bookstore_app import app, db
+from bookstore_app.forms.author_form import AuthorForm
+from bookstore_app.models.author_model import Author
+from bookstore_app.models.book_model import Book
 
 
 @app.route('/authors', methods=['GET', 'POST'])

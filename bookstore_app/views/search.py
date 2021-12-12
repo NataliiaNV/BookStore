@@ -1,12 +1,10 @@
 
-from flask import render_template, flash, request
-from bookstore import app
+from flask import render_template, request
+from bookstore_app import app
 
-from forms.search_form import SearchForm
+from bookstore_app.forms.search_form import SearchForm
 
-from models.genre_model import Genre
-from models.author_model import Author
-from models.book_model import Book
+from bookstore_app.models.book_model import Book
 
 
 # Pass Stuff To Navbar

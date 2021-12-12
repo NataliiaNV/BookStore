@@ -2,8 +2,8 @@
 This module implements instance of author in database
 """
 
-from bookstore import db
-from models.book_model import Book
+from bookstore_app import db
+from bookstore_app.models.book_model import Book
 
 
 class Author(db.Model):

@@ -1,7 +1,7 @@
 import unittest
-from bookstore import app
+from bookstore_app import app
 
-from views import home, search, genres, authors, books
+
 
 
 class GenreTests(unittest.TestCase):

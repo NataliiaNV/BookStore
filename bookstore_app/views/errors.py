@@ -3,7 +3,7 @@ This module implements rendering custom error pages
 """
 
 from flask import render_template
-from app import app
+from bookstore_app import app
 
 
 @app.errorhandler(404)

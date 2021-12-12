@@ -21,4 +21,5 @@ migrate = Migrate(app, db)
 
 app.config.from_object(Config)
 
-from views import home, authors, books, genres, search
+from bookstore_app.views import home, authors, genres, search, books
+

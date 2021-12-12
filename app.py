@@ -1,4 +1,4 @@
-from bookstore import app
+from bookstore_app import app
 
 
 if __name__ == '__main__':

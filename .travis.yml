@@ -3,9 +3,11 @@ python:
   - 3.8.10
 install:
   - pip install -r requirements.txt
+  - pip install bookstore_app
+
 
 scripts:
-  - python -m unittest tests.genre_test
+  - python bookstore_app/tests/genre_test.py
 notifications:
   email:
     reciplients:
