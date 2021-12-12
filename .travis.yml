@@ -5,9 +5,8 @@ install:
   - pip install -r requirements.txt
   - pip install bookstore_app
 
-
 scripts:
-  - python bookstore_app/tests/genre_test.py
+  "run -m unittest discover -s . -p '*_tests.py'"
 notifications:
   email:
     reciplients:

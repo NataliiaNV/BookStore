@@ -6,11 +6,14 @@ from flask import render_template, flash, request
 from bookstore_app import app, db
 from bookstore_app.forms.genre_form import GenreForm
 from bookstore_app.models.genre_model import Genre
+from bookstore_app.service.genres_service import GenresService
+
+genres_service = GenresService()
 
 
-@app.route('/edit_genres', methods=['GET', 'POST'])
+@app.route('/edit_genres', methods=['GET'])
 def edit_genres():
-    genres = Genre.query.order_by(Genre.id)
+    genres = genres_service.get_genres()
     return render_template('edit_genres.html', genres=genres)
 
 
