@@ -3,9 +3,9 @@ This module implements rendering home page
 """
 
 from flask import render_template, flash
-from bookstore_app import app
+from bookstore import app
 
-from bookstore_app.models.genre_model import Genre
+from models.genre_model import Genre
 
 
 @app.route('/')
@@ -17,8 +17,8 @@ def index():
     :return: rendered `home.html` template
     """
     flash('Welcome to our website!')
-
     genres = Genre.query.order_by(Genre.id)
-
     return render_template('home.html', genres=genres)
+
+
 

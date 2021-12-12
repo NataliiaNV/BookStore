@@ -2,7 +2,7 @@
 This module implements instance of book in database
 """
 
-from bookstore_app import db
+from bookstore import db
 
 
 

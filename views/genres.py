@@ -3,9 +3,9 @@ This module implements rendering  genre page
 """
 
 from flask import render_template, flash, request
-from bookstore_app import app, db
-from bookstore_app.forms.genre_form import GenreForm
-from bookstore_app.models.genre_model import Genre
+from bookstore import app, db
+from forms.genre_form import GenreForm
+from models.genre_model import Genre
 
 
 @app.route('/edit_genres', methods=['GET', 'POST'])

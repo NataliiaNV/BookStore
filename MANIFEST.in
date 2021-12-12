@@ -1,0 +1,3 @@
+recursive-include bookstore_app/templates *
+recursive-include bookstore_app/static *
+include requirements.txt

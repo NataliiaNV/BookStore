@@ -2,8 +2,8 @@
 This module implements instance of book genre in database
 """
 
-from bookstore_app import db
-from bookstore_app.models.book_model import Book
+from bookstore import db
+from models.book_model import Book
 
 
 class Genre(db.Model):

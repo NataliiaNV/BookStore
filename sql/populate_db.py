@@ -107,9 +107,10 @@ def populate_database():
 
 if __name__ == '__main__':
     print('Clean database...')
+    db.session.query(Book).delete()
     db.session.query(Genre).delete()
     db.session.query(Author).delete()
-    db.session.query(Book).delete()
+
     print('Populating database...')
     populate_database()
     print('Successfully populated!')

@@ -3,9 +3,9 @@ This module implements rendering add_book page
 """
 
 from flask import render_template, flash, request
-from bookstore_app import app, db
-from bookstore_app.forms.book_form import BookForm
-from bookstore_app.models.book_model import Book
+from bookstore import app, db
+from forms.book_form import BookForm
+from models.book_model import Book
 
 
 @app.route('/books', methods=['GET', 'POST'])
