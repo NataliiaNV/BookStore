@@ -11,22 +11,25 @@
 
     <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Books </h1>
+    	<h1 align="center">Books <a href=" {{ url_for('add_book') }}" class="btn btn-outline-secondary brn-sm" >Add Book</a></h1>
 
     <table class="table table-hover table-bordered table-striped">
         <tr>
 
             <td> <h5> ID</h5> </td>
             <td class="rightcol"> <h5>  Book Name </h5> </td>
-            <td class="rightcol">  <h5> Author ID</h5> </td>
+            <td class="rightcol">  <h5> Author </h5> </td>
 
-            <td class="rightcol">  <h5> Genre ID</h5> </td>
+            <td class="rightcol">  <h5> Genre </h5> </td>
             <td class="rightcol">  <h5> Publish Date </h5> </td>
 
             <td class="rightcol">  <h5> Price </h5> </td>
             <td class="rightcol">  <h5> Rating </h5>  </td>
 
              <td class="rightcol">  <h5> Description </h5> </td>
+
+            <td class="rightcol">  <h5> Edit</h5> </td>
+             <td class="rightcol"> <h5> Delete </h5> </td>
 
             <td class="rightcol">  <h5> </h5> </td>
 
@@ -37,15 +40,20 @@
 
             <td> {{ book.id }}. </td>
             <td class="rightcol fw-bolder text-primary"  > {{ book.name }}  </td>
-            <td class="rightcol"> {{ book.author_id }} </td>
+            <td class="rightcol"> {{ book.author_name }} </td>
 
-            <td class="rightcol"> {{ book.genre_id }} </td>
+            <td class="rightcol"> {{ book.genres_name }} </td>
             <td class="rightcol"> {{ book.publish_date.strftime('%Y.%m.%d') }} </td>
 
             <td class="rightcol"> {{ book.price }} </td>
             <td class="rightcol"> {{ book.rating }} </td>
 
              <td class="rightcol text-muted"> {{ book.description }} </td>
+
+             <td class="rightcol">  <a href="{{ url_for('update_book', id=book.id)}}"
+			   class="btn btn-outline-secondary brn-sm">Edit</a> </td>
+             <td class="rightcol">  <a href="{{ url_for('delete_book', id=book.id)}}"
+			   class="btn btn-outline-danger brn-sm">Delete</a> </td>
 
             <td class="rightcol">  <a href="#"
 			   class="btn btn-outline-success">Buy</a> </td>

@@ -9,19 +9,14 @@
         </div>
     {% endfor %}
 
-    <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Genres</h1>
 
-    <table class="table table-hover table-bordered table-striped">
+    <h1 align="center">BookStore</h1>
 
-    {% for genre in genres %}
-        <tr>
-        <td>
-       <a href="#">{{ genre.name }} </a> - {{ genre.description }}
-        </td>
-        </tr>
-    {% endfor %}
-    </table>
+    <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" >
+
+
+
+
 
 {% endblock %}

@@ -11,7 +11,7 @@
 
     <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Authors  </h1>
+    	<h1 align="center">Authors <a href=" {{ url_for('add_author') }}" class="btn btn-outline-secondary brn-sm" >Add Author</a></h1> </h1>
 
     <table class="table table-hover table-bordered table-striped">
         <tr>
@@ -21,6 +21,7 @@
             <td class="rightcol"> <h5>  Birth Date</h5> </td>
             <td class="rightcol"> <h5>  AVG Book Rating </h5>   </td>
            <td class="rightcol"><h5>  Edit </h5>  </td>
+           <td class="rightcol">  <h5> Delete</h5> </td>
 
 
         </tr>
@@ -33,6 +34,8 @@
              <td class="rightcol">   {{ avg_rate[auth.id] }}   </td>
            <td class="rightcol">  <a href="{{ url_for('update_author', id=auth.id)}}"
 			   class="btn btn-outline-secondary brn-sm">Edit</a> </td>
+           <td class="rightcol">  <a href="{{ url_for('delete_author', id=auth.id)}}"
+			   class="btn btn-outline-danger brn-sm">Delete</a> </td>
 
 
         </tr>
