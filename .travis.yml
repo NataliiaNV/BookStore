@@ -3,7 +3,6 @@ python:
   - 3.8.10
 install:
   - pip install -r requirements.txt
-  - pip install bookstore_app
 
 scripts:
   "run -m unittest discover -s . -p '*_tests.py'"
