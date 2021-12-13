@@ -29,16 +29,19 @@ class AuthorsService:
             elif form.validate_on_submit():
                 new_auth = Author(name=form.name.data,
                                   birth_date=form.birth_date.data)
-                # clear form
-                form.name.data = ''
-                form.birth_date.data = ''
 
                 db.session.add(new_auth)
                 db.session.commit()
 
+                # clear form
+                form.name.data = ''
+                form.birth_date.data = ''
+
                 flash("Author added successfully!")
         except sqlalchemy.exc.IntegrityError:
             flash("This author already exists!")
+        except sqlalchemy.exc.OperationalError:
+            flash("Check the data format!")
 
         return form
 
@@ -47,15 +50,27 @@ class AuthorsService:
         author_to_delete = Author.query.get_or_404(id)
         form = AuthorForm()
 
-        try:
-            db.session.delete(author_to_delete)
-            db.session.commit()
-            flash("Author deleted successfully!")
-            our_authors = Author.query.order_by(Author.id)
-            return form, our_authors
-        except:
-            flash("Oops! There was a problem with deleting author, try again...")
-            return form, our_authors
+        if not db.session.query(
+                db.session.query(Book).filter_by(author_id=id).exists()).scalar():
+            try:
+                db.session.delete(author_to_delete)
+                db.session.commit()
+                flash("Author deleted successfully!")
+                page = request.args.get('page', 1, type=int)
+                avg_rate = db.session.query(Author.id, db.func.round(db.func.avg(Book.rating), 2)). \
+                    join(Author).group_by(Author.id).all()
+                our_authors = Author.query.order_by(Author.id).paginate(page=page, per_page=5, error_out=False)
+                return form, our_authors, dict(avg_rate)
+            except:
+                flash("Oops! There was a problem with deleting author, try again...")
+                return form, our_authors, dict(avg_rate)
+        else:
+            page = request.args.get('page', 1, type=int)
+            avg_rate = db.session.query(Author.id, db.func.round(db.func.avg(Book.rating), 2)). \
+                join(Author).group_by(Author.id).all()
+            our_authors = Author.query.order_by(Author.id).paginate(page=page, per_page=5, error_out=False)
+            flash("Sorry, you can't delete this author, you have books by this author!")
+            return form, our_authors, dict(avg_rate)
 
     @classmethod
     def update_author(cls, id):

@@ -30,6 +30,6 @@ def update_author(id):
 
 @app.route('/delete_author/<int:id>')
 def delete_author(id):
-    form, authors = authors_service.delete_author(id)
-    return render_template('edit_authors.html', form=form, authors=authors)
+    form, authors, avg_rate = authors_service.delete_author(id)
+    return render_template('authors.html', form=form, authors=authors, avg_rate=avg_rate)
 

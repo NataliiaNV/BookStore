@@ -25,9 +25,11 @@ class BooksService:
 
 
 
+
     @classmethod
     def add_book(cls):
         form = BookForm()
+        genre_list = Genre.query.add_columns(Genre.id, Genre.name)
         try:
             if form.name.data is None or form.name.data == "":
                 flash("Fill in the data please!")
@@ -70,7 +72,13 @@ class BooksService:
             db.session.delete(book_to_delete)
             db.session.commit()
             flash("Book deleted successfully!")
-            our_books = Book.query.order_by(Book.id)
+            page = request.args.get('page', 1, type=int)
+            our_books = Book.query.join(Genre, Genre.id == Book.genre_id). \
+                join(Author, Author.id == Book.author_id) \
+                .add_columns(Book.id, Book.name, Book.author_id, Book.rating,
+                             Book.price, Author.name.label("author_name"),
+                             Book.description, Book.publish_date, Genre.name.label("genres_name")) \
+                .paginate(page=page, per_page=3, error_out=False)
             return form, our_books
         except:
             flash("Oops! There was a problem with deleting book, try again...")

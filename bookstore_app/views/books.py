@@ -25,7 +25,7 @@ def add_book():
 @app.route('/delete_book/<int:id>')
 def delete_book(id):
     form, our_books = books_service.delete_book(id)
-    return render_template('edit_books.html',
+    return render_template('books.html',
                            form=form, books=our_books)
 
 
@@ -36,7 +36,3 @@ def update_book(id):
                            form=form, book_to_update=book_to_update, id=id)
 
 
-@app.route('/edit_books', methods=['GET', 'POST'])
-def edit_books():
-    our_books = Book.query.order_by(Book.name)
-    return render_template('edit_books.html', books=our_books)

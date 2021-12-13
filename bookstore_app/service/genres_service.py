@@ -2,7 +2,6 @@ import sqlalchemy
 
 from bookstore_app.models.genre_model import Genre
 from bookstore_app.forms.genre_form import GenreForm
-from bookstore_app.forms.book_form import BookForm
 from bookstore_app.models.book_model import Book
 from bookstore_app import db
 from flask import flash, request
@@ -39,18 +38,24 @@ class GenresService:
     @classmethod
     def delete_genre(cls, id):
         genre_to_delete = Genre.query.get_or_404(id)
-        # db.session.query(User.id).filter_by(name='davidism').first() is not None
         form = GenreForm()
 
-        try:
-            db.session.delete(genre_to_delete)
-            db.session.commit()
-            flash("Genre deleted successfully!")
+        if not db.session.query(
+                db.session.query(Book).filter_by(genre_id=id).exists()).scalar():
+            try:
+                db.session.delete(genre_to_delete)
+                db.session.commit()
+                flash("Genre deleted successfully!")
+                genres = Genre.query.order_by(Genre.id)
+                return form, genres
+            except:
+                flash("Oops! There was a problem with deleting genre, try again...")
+                return form, genres
+        else:
             genres = Genre.query.order_by(Genre.id)
+            flash("Sorry, you can't delete this genre, you have books of this genre!")
             return form, genres
-        except:
-            flash("Oops! There was a problem with deleting genre, try again...")
-            return form, genres
+
 
     @classmethod
     def update_genre(cls, id):
