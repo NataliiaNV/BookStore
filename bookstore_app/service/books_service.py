@@ -29,19 +29,20 @@ class BooksService:
     @classmethod
     def add_book(cls):
         form = BookForm()
-        genre_list = Genre.query.add_columns(Genre.id, Genre.name)
+        form.genre_id.choices = [(row.id, row.name) for row in Genre.query.all()]
+        form.author_id.choices = [(row.id, row.name) for row in Author.query.all()]
         try:
             if form.name.data is None or form.name.data == "":
                 flash("Fill in the data please!")
             elif form.validate_on_submit():
                 new_book = Book(name=form.name.data,
                                 author_id=form.author_id.data,
+
                                 genre_id=form.genre_id.data,
                                 publish_date=form.publish_date.data,
                                 description=form.description.data,
                                 price=form.price.data,
                                 rating=form.rating.data)
-
 
                 db.session.add(new_book)
                 db.session.commit()
