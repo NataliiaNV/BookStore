@@ -22,7 +22,7 @@
         </li>
 
       </ul>
-      <form method="POST" action="{{ url_for('search')}}" class="d-flex">
+      <form method="POST" action="{{ url_for('search_books_by_name')}}" class="d-flex">
         {{ form.hidden_tag() }}
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
         <button class="btn btn-outline-secondary" type="submit">Search</button>

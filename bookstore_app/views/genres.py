@@ -2,10 +2,8 @@
 This module implements rendering  genre page
 """
 
-from flask import render_template, flash, request
-from bookstore_app import app, db
-from bookstore_app.forms.genre_form import GenreForm
-from bookstore_app.models.genre_model import Genre
+from flask import render_template
+from bookstore_app import app
 from bookstore_app.service.genres_service import GenresService
 
 genres_service = GenresService()
@@ -17,7 +15,7 @@ def genres():
     return render_template('genres.html', genres=genres)
 
 
-@app.route('/add_genre', methods=['GET', 'POST', 'PUT'])
+@app.route('/add_genre', methods=['GET', 'POST'])
 def add_genre():
     form = genres_service.add_genre()
     return render_template('add_genre.html', form=form)

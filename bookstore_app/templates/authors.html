@@ -16,9 +16,9 @@
     <table class="table table-hover table-bordered table-striped">
         <tr>
 
-           <td> <h5> ID </h5> </td>
+<!--           <td> <h5> ID </h5> </td>-->
            <td class="rightcol"> <h5>  Name </h5>   </td>
-            <td class="rightcol"> <h5>  Birth Date</h5> </td>
+            <td class="rightcol"> <h5>  Birth Date </h5> </td>
             <td class="rightcol"> <h5>  AVG Book Rating </h5>   </td>
            <td class="rightcol"><h5>  Edit </h5>  </td>
            <td class="rightcol">  <h5> Delete</h5> </td>
@@ -28,9 +28,9 @@
     {% for auth in authors.items %}
         <tr>
 
-           <td>  {{ auth.id }}. </td>
-           <td class="rightcol">  <a href="#">{{ auth.name }} </a> </td>
-            <td class="rightcol">  {{ auth.birth_date.strftime('%Y.%m.%d') }} </td>
+<!--           <td>  {{ auth.id }}. </td>-->
+           <td class="rightcol">  <a href=" {{ url_for('search_books_by_author', id=auth.id) }}  ">{{ auth.name }} </a> </td>
+            <td class="rightcol" nowrap>  {{ auth.birth_date.strftime('%Y-%m-%d') }} </td>
              <td class="rightcol">   {{ avg_rate[auth.id] }}   </td>
            <td class="rightcol">  <a href="{{ url_for('update_author', id=auth.id)}}"
 			   class="btn btn-outline-secondary brn-sm">Edit</a> </td>

@@ -4,14 +4,18 @@ from bookstore_app.models.genre_model import Genre
 from bookstore_app.forms.genre_form import GenreForm
 from bookstore_app.models.book_model import Book
 from bookstore_app import db
-from flask import flash, request
+from flask import flash, request, jsonify
+# from bookstore_app.shemas.genre_shema import GenreSchema
 
 
 class GenresService:
 
     @classmethod
     def get_genres(cls):
-        return Genre.query.order_by(Genre.id)
+        genres = Genre.query.order_by(Genre.id).all()
+        # genre_shema = GenreSchema(many=True)
+        # genres_output = genre_shema.dump(genres)
+        return genres #, jsonify({'genres': genres_output})
 
     @classmethod
     def add_genre(cls):

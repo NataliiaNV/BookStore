@@ -29,7 +29,7 @@ class Book(db.Model):
     price = db.Column(db.Float, nullable=False)
     rating = db.Column(db.Float)
 
-    def __init__(self, name, author_id, genre_id,publish_date,  description, price, rating):
+    def __init__(self, name, author_id, genre_id, publish_date,  description, price, rating):
         self.name = name
         self.author_id = author_id
         self.genre_id = genre_id

@@ -12,7 +12,8 @@ books_service = BooksService()
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
-    our_books = books_service.get_books()
+    page = request.args.get('page', 1, type=int)
+    our_books = books_service.get_books().paginate(page=page, per_page=3, error_out=False)
     return render_template('books.html', books=our_books)
 
 

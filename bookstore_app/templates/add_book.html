@@ -24,17 +24,17 @@
                 {{ form.name(class="form-control") }}
                 <br/>
 
-                {{ form.author_id.label(class="form-label") }}
+               <label>Authors</label>
                 {{ form.author_id(class="form-control") }}
                 <br/>
 
-                {{ form.genre_id.label(class="form-label") }}
+                <label>Genre</label>
                 {{ form.genre_id(class="form-control") }}
 
+                <br/>
 
-
-                <label>Publish date (YYYY-MM-DD) </label>
-                {{ form.publish_date(class="form-control") }}
+                <label>Publish date </label>
+                {{ form.publish_date(class="form-control", type="date") }}
                 <br/>
 
                 {{ form.description.label(class="form-label") }}

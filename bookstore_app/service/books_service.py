@@ -13,13 +13,14 @@ class BooksService:
 
     @classmethod
     def get_books(cls):
-        page = request.args.get('page', 1, type=int)
-        our_books = Book.query.join(Genre, Genre.id == Book.genre_id).\
-            join(Author, Author.id == Book.author_id)\
+
+        our_books = Book.query.join(Genre, Genre.id == Book.genre_id)\
+            .join(Author, Author.id == Book.author_id)\
             .add_columns(Book.id, Book.name, Book.author_id, Book.rating,
                          Book.price, Author.name.label("author_name"),
                          Book.description, Book.publish_date, Genre.name.label("genres_name"))\
-            .paginate(page=page, per_page=3, error_out=False)
+            .order_by(Book.rating.desc())
+
 
         return our_books
 
