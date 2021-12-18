@@ -7,8 +7,6 @@ import logging
 from logging.config import dictConfig
 from logconfig import LOGGING
 
-from flask_marshmallow import Marshmallow
-
 dictConfig(LOGGING)
 
 # create a Flask instance
@@ -22,8 +20,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 app.config.from_object(Config)
-
-# ma = Marshmallow(app)
 
 from bookstore_app.views import home, authors, genres, search, books
 
