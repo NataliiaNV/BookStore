@@ -6,6 +6,7 @@ install:
 
 scripts:
   - python -m unittest bookstore_app.tests.unit.genre_unit_tests
+  - python -m unittest bookstore_app.tests.unit.author_unit_tests
 notifications:
   email:
     reciplients:

@@ -25,7 +25,7 @@
 
 
         </tr>
-    {% for auth in authors.items %}
+    {% for auth in authors  %}
         <tr>
             <td>{{ loop.index }}</td>
 <!--           <td>  {{ auth.id }}. </td>-->
@@ -41,19 +41,6 @@
         </tr>
     {% endfor %}
     </table>
-        {% for page_num in authors.iter_pages() %}
-            {% if page_num %}
-                {% if authors.page == page_num %}
-                <a class="btn btn-info mb-4" href="{{ url_for('authors', page=page_num) }}">
-                    {{ page_num }}   </a>
-                 {% else %}
-                <a class="btn btn-outline-info mb-4" href="{{ url_for('authors', page=page_num) }}">
-                    {{ page_num }}   </a>
-                 {% endif %}
-            {% endif %}
-
-        {% endfor %}
-
 
 {% endblock %}
 

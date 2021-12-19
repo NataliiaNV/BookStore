@@ -49,8 +49,7 @@ def search_books_by_genre(genre_name):
 def search_books_by_author(id):
 
     books = book_service.get_books().filter(Book.author_id == id)
-    # page = request.args.get("page", 1, type=int)
-    # books = books.paginate(page=page, per_page=5, error_out=False)
+
     return render_template("books.html", books=books)
 
 
@@ -62,8 +61,6 @@ def search_books_by_date():
         try:
             books = Book.query.filter(Book.publish_date == datetime.
                                       strptime(form.searched.data, "%Y-%m-%d"))
-            # page = request.args.get("page", 1, type=int)
-            # books = books.paginate(page=page, per_page=5, error_out=False)
             return render_template("books.html", form=form,
                                    searched=form.searched.data, books=books)
         except ValueError:

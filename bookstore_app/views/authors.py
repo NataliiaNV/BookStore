@@ -19,12 +19,11 @@ def authors():
     """
 
     authors, avg_rate = authors_service.get_authors()
-    page = request.args.get("page", 1, type=int)
-    authors = authors.paginate(page=page, per_page=5, error_out=False)
+
     return render_template("authors.html", authors=authors, avg_rate=avg_rate)
 
 
-@app.route("/add_authors", methods=["GET", "POST"])
+@app.route("/add_author", methods=["GET", "POST"])
 def add_author():
     """
     Returns rendered `add_author.html` template for url route
@@ -59,7 +58,6 @@ def delete_author(id):
     :return: rendered `authors.html` template
     """
     authors, avg_rate = authors_service.delete_author(id)
-    page = request.args.get("page", 1, type=int)
-    authors = authors.paginate(page=page, per_page=5, error_out=False)
+
     return render_template("authors.html", authors=authors, avg_rate=avg_rate)
 
