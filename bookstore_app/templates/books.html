@@ -16,12 +16,13 @@
                     {{ form.hidden_tag() }}
                     <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched_1" >
                     <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched_2" >
-                    <button class="btn btn--subtle" type="submit" >Range Search</button>
+                    <button class="btn btn-outline-secondary brn-sm" type="submit" >Range Search</button>
                 </form>
         </h1>
 
+
     <table class="table table-hover table-bordered table-striped">
-        <tr>
+        <tr> <th>#</th>
 
 <!--            <td> <h5> ID</h5> </td>-->
             <td class="rightcol"> <h5>  Book Name </h5> </td>
@@ -48,9 +49,9 @@
 
 
         </tr>
-    {% for book in books.items %}
+    {% for book in books  %}
         <tr>
-
+            <td>{{ loop.index }}</td>
 <!--            <td> {{ book.id }}. </td>-->
             <td class="rightcol fw-bolder text-primary"  > {{ book.name }}  </td>
             <td class="rightcol"> {{ book.author_name }} </td>
@@ -68,24 +69,13 @@
              <td class="rightcol">  <a href="{{ url_for('delete_book', id=book.id)}}"
 			   class="btn btn-outline-danger brn-sm">Delete</a> </td>
 
-<!--            <td class="rightcol">  <a href="#"-->
-<!--			   class="btn btn-outline-success">Buy</a> </td>-->
 
 
         </tr>
     {% endfor %}
     </table>
-        {% for page_num in books.iter_pages() %}
-            {% if page_num %}
-               {% if books.page == page_num %}
-                <a class="btn btn-info mb-4" href="{{ url_for('books', page=page_num) }}">
-                    {{ page_num }}   </a>
-                 {% else %}
-                <a class="btn btn-outline-info mb-4" href="{{ url_for('books', page=page_num) }}">
-                    {{ page_num }}   </a>
-                 {% endif %}
-            {% endif %}
 
-        {% endfor %}
+
+
 
 {% endblock %}

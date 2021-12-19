@@ -8,12 +8,11 @@ from bookstore_app.models.book_model import Book
 
 class Genre(db.Model):
     """
-        Genre object stands for representation data in genres table.
-        :param id: id of book genre in db
-        :param name: genre name
-        :param description: genre description
+    Genre object stands for representation data in genres table
+    :param id: id of book genre in db
+    :param name: genre name
+    :param description: genre description
     """
-
     __tablename__ = "genres"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -27,7 +26,7 @@ class Genre(db.Model):
 
     def __repr__(self):
         """
-        method gives representation of genres
+        Method gives representation of genres
         :return: string with genre id, name, description
         """
         return f"Genre(id: {self.id}, name: {self.name}, description: {self.description})"

@@ -5,19 +5,17 @@ This module implements instance of book in database
 from bookstore_app import db
 
 
-
 class Book(db.Model):
     """
-        Genre object stands for representation data in books table.
-        :param id: id of book in db
-        :param name: book name
-        :param author_id: author id
-        :param genre_id: genre id
-        :param description: book description
-        :param price: book price
-        :param rating: book rating
+    Genre object stands for representation data in books table
+    :param id: id of book in db
+    :param name: book name
+    :param author_id: author id
+    :param genre_id: genre id
+    :param description: book description
+    :param price: book price
+    :param rating: book rating
     """
-
     __tablename__ = "books"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -41,7 +39,7 @@ class Book(db.Model):
 
     def __repr__(self):
         """
-        method gives representation of genres
+        Method gives representation of genres
         :return: string with book id, name,author_id,genre_id, publish_date, description, price, rating
         """
         return f"Book(id: {self.id}, name: {self.name}, author_id: {self.author_id}, genre_id: {self.genre_id}," \

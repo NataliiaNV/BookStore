@@ -8,11 +8,17 @@ from wtforms.validators import DataRequired
 
 
 class SearchForm(FlaskForm):
+    """
+    Custom FlaskForm object for search form.
+    """
     searched = StringField("Searched", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
 
 class RangeSearchForm(FlaskForm):
+    """
+    Custom FlaskForm object for search form by dates range.
+    """
     searched_1 = StringField("Searched", validators=[DataRequired()])
     searched_2 = StringField("Searched", validators=[DataRequired()])
     submit = SubmitField("Submit")

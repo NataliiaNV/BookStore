@@ -11,7 +11,7 @@
 
     <img src="{{ url_for('static', filename='images/1.png')}}" width="100%" height="320">
 
-    	<h1 align="center">Update author</h1>
+    	<h1 align="center">Update book</h1>
 	<br/><br/>
     <table class="table table-hover table-bordered table-striped">
 
@@ -23,12 +23,12 @@
                  {{ form.name.label(class="form-label") }}
                  {{ form.name(class="form-control", value=book_to_update.name) }}
                  <br/>
-                 {{ form.author_id.label(class="form-label") }}
-                 {{ form.author_id(class="form-control", value=book_to_update.author_id) }}
-                 <br/>
-                 {{ form.genre_id.label(class="form-label") }}
-                 {{ form.genre_id(class="form-control", value=book_to_update.genre_id) }}
-                 <br/>
+                 <label>Authors</label>
+                {{ form.author_id(class="form-control") }}
+                <br/>
+                <label>Genre</label>
+                {{ form.genre_id(class="form-control") }}
+                <br/>
 
                  <label>Publish date (YYYY-MM-DD) </label>
                  {{ form.publish_date(class="form-control", value=book_to_update.publish_date.strftime('%Y-%m-%d')) }}

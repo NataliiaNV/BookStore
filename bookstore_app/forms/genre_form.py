@@ -4,7 +4,7 @@ This module implements instance of genre web form
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired
 
 
 class GenreForm(FlaskForm):

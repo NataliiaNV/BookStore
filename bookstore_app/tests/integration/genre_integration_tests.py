@@ -8,7 +8,7 @@ class GenreTests(unittest.TestCase):
     def test_index(self):
         app.testing = True
         client = app.test_client()
-        response = client.get('/')
+        response = client.get("/")
         statuscode = response.status_code
         # for rule in app.url_map.iter_rules():
         #     print(rule)
@@ -17,10 +17,10 @@ class GenreTests(unittest.TestCase):
     def test_edit_genres(self):
         app.testing = True
         client = app.test_client()
-        response = client.get('/edit_genres')
+        response = client.get("/update_genre/1")
 
         self.assertEqual(200, response.status_code)
-        #self.assertEqual(response.data, )
+
 
 
 if __name__ == "__main__":
