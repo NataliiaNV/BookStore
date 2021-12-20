@@ -1,16 +1,27 @@
+"""
+This module implements unittests for authors
+"""
+
 import unittest
 from unittest import TestCase, mock
 from bookstore_app import app
 from bookstore_app.forms.author_form import AuthorForm
 from bs4 import BeautifulSoup
 
-from datetime import date, datetime
+from datetime import datetime
+
 
 def get_authors_mock():
+    """
+    Return datas for testing get_authors
+    """
     return [], {}
 
 
 def add_author_mock():
+    """
+    Return form for testing add_author
+    """
     form = AuthorForm()
     form.name.data = "NV"
     form.birth_date.data = "1995-12-24"
@@ -18,10 +29,16 @@ def add_author_mock():
 
 
 def delete_author_mock(id):
+    """
+    Return datas for testing delete_author
+    """
     return [], {}
 
 
 def update_author_mock(id):
+    """
+    Return datas for testing update_author
+    """
     form = AuthorForm()
     form.name.data = "NV"
     form.birth_date.data = datetime.strptime("1995-12-24", "%Y-%m-%d")
@@ -30,9 +47,15 @@ def update_author_mock(id):
 
 
 class AuthorTests(TestCase):
+    """
+    This class implements tests for authors
+    """
 
     @mock.patch("bookstore_app.service.authors_service.AuthorsService.get_authors")
     def test_authors(self, get_authors):
+        """
+        Tests get_authors
+        """
         get_authors.side_effect = get_authors_mock
 
         app.testing = True
@@ -44,6 +67,9 @@ class AuthorTests(TestCase):
 
     @mock.patch("bookstore_app.service.authors_service.AuthorsService.add_author")
     def test_add_author(self, add_author):
+        """
+        Tests add_author
+        """
         with app.test_request_context():
             add_author.side_effect = add_author_mock
 
@@ -52,8 +78,6 @@ class AuthorTests(TestCase):
         app.testing = True
         client = app.test_client()
         response = client.get("/add_author")
-
-
 
         soup = BeautifulSoup(response.data, "html.parser")
         form_name = soup.find("input", {"name": "name"})["value"]
@@ -67,6 +91,9 @@ class AuthorTests(TestCase):
 
     @mock.patch("bookstore_app.service.authors_service.AuthorsService.delete_author")
     def test_delete_author(self, delete_author):
+        """
+        Tests delete_author
+        """
         delete_author.side_effect = delete_author_mock
         id = 1
 
@@ -80,7 +107,10 @@ class AuthorTests(TestCase):
         delete_author.assert_called_with(id)
 
     @mock.patch("bookstore_app.service.authors_service.AuthorsService.update_author")
-    def test_update_genre(self, update_author):
+    def test_update_author(self, update_author):
+        """
+        Tests update_author
+        """
         update_author.side_effect = update_author_mock
         id = 1
 
