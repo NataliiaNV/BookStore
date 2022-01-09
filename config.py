@@ -1,15 +1,9 @@
 import os
 
-# user = os.environ.get('MYSQL_USER')
-# password = os.environ.get('MYSQL_PASSWORD')
-# server = os.environ.get('MYSQL_SERVER')
-# database = os.environ.get('MYSQL_DATABASE')
-
-user = "root"
-password = "Qazxsw101100!"
-server = "localhost"
-database = "bookstore"
-
+user = os.environ.get('MYSQL_USER')
+password = os.environ.get('MYSQL_PASSWORD')
+server = os.environ.get('MYSQL_SERVER')
+database = os.environ.get('MYSQL_DATABASE')
 
 class Config:
     DEBUG = True
