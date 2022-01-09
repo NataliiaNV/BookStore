@@ -76,10 +76,14 @@ def search_books_by_dates():
         form.searched_1.data = str("1800-01-01")
     if form.validate_on_submit():
 
-        # query db
-        books = Book.query.filter(Book.publish_date >= datetime.strptime(form.searched_1.data, "%Y-%m-%d"))\
-            .filter(Book.publish_date <= datetime.strptime(form.searched_2.data, "%Y-%m-%d"))
+        try:
+            # query db
+            books = Book.query.filter(Book.publish_date >= datetime.strptime(form.searched_1.data, "%Y-%m-%d"))\
+                .filter(Book.publish_date <= datetime.strptime(form.searched_2.data, "%Y-%m-%d"))
 
-        return render_template("books.html", form=form, books=books)
+            return render_template("books.html", form=form, books=books)
+        except ValueError:
+            flash("Check your data please")
+            return redirect(url_for("books"))
     else:
         return redirect(url_for("books"))
