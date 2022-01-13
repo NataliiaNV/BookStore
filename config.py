@@ -5,6 +5,7 @@ password = os.environ.get('MYSQL_PASSWORD')
 server = os.environ.get('MYSQL_SERVER')
 database = os.environ.get('MYSQL_DATABASE')
 
+
 class Config:
     DEBUG = True
     SECRET_KEY = os.urandom(32)

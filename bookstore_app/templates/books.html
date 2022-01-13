@@ -24,7 +24,6 @@
     <table class="table table-hover table-bordered table-striped">
         <tr> <th>#</th>
 
-<!--            <td> <h5> ID</h5> </td>-->
             <td class="rightcol"> <h5>  Book Name </h5> </td>
             <td class="rightcol">  <h5> Author </h5> </td>
 
@@ -45,14 +44,14 @@
             <td class="rightcol">  <h5> Edit</h5> </td>
              <td class="rightcol"> <h5> Delete </h5> </td>
 
-<!--            <td class="rightcol">  <h5> </h5> </td>-->
+
 
 
         </tr>
     {% for book in books  %}
         <tr>
             <td>{{ loop.index }}</td>
-<!--            <td> {{ book.id }}. </td>-->
+
             <td class="rightcol fw-bolder text-primary"  > {{ book.name }}  </td>
             <td class="rightcol"> {{ book.author_name }} </td>
 
@@ -74,8 +73,5 @@
         </tr>
     {% endfor %}
     </table>
-
-
-
 
 {% endblock %}

@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+
 """
 This module defines is used to populate database BookStore,
 """
+
+
 from datetime import date
 
 from bookstore_app.models.book_model import Book
@@ -110,6 +114,10 @@ if __name__ == '__main__':
     db.session.query(Book).delete()
     db.session.query(Genre).delete()
     db.session.query(Author).delete()
+
+    db.session.execute("alter table books AUTO_INCREMENT = 1")
+    db.session.execute("alter table genres AUTO_INCREMENT = 1")
+    db.session.execute("alter table authors AUTO_INCREMENT = 1")
 
     print('Populating database...')
     populate_database()

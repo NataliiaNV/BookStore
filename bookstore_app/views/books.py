@@ -10,7 +10,7 @@ from bookstore_app.service.books_service import BooksService
 books_service = BooksService()
 
 
-@app.route("/books", methods=["GET", "POST"])
+@app.route("/books", methods=["GET"])
 def books():
     """
     Returns rendered `books.html` template for url route
@@ -35,7 +35,7 @@ def add_book():
     return render_template("add_book.html", form=form)
 
 
-@app.route("/delete_book/<int:id>")
+@app.route("/delete_book/<int:id>", methods=["GET", "POST"])
 def delete_book(id):
     """
     Returns rendered `books.html` template for url route
@@ -44,8 +44,7 @@ def delete_book(id):
     :return: rendered `books.html` template
     """
     our_books = books_service.delete_book(id)
-    # page = request.args.get("page", 1, type=int)
-    # our_books = our_books.paginate(page=page, per_page=5, error_out=False)
+
     return render_template("books.html",
                            books=our_books)
 

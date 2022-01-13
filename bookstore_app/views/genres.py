@@ -33,7 +33,7 @@ def add_genre():
     return render_template("add_genre.html", form=form)
 
 
-@app.route("/delete_genre/<int:id>")
+@app.route("/delete_genre/<int:id>", methods=["GET", "POST"])
 def delete_genre(id):
     """
     Returns rendered `genres.html` template for url route
