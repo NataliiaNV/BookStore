@@ -1,5 +1,5 @@
 """
-Module is made for handling with REST-API requests.
+This module handles REST API requests.
 """
 
 import sqlalchemy
@@ -9,7 +9,8 @@ from datetime import datetime
 
 from bookstore_app.service.authors_service import AuthorsService
 from bookstore_app.service.books_service import BooksService
-from bookstore_app.service.genres_service import GenresService, DependencyError
+from bookstore_app.service.genres_service import GenresService
+from bookstore_app.service.dependency_error import DependencyError
 
 from bookstore_app.rest.schemas import AuthorSchema, BookSchema, GenreSchema
 

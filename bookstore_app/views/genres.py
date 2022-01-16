@@ -9,6 +9,7 @@ from bookstore_app.controllers.genres_controller import GenresController
 
 genres_controller = GenresController()
 
+
 @app.route("/genres", methods=["GET"])
 def genres():
     """

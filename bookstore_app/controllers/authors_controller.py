@@ -1,5 +1,5 @@
 """
-This module implements services for authors, used to make database queries
+This module handles forms based on the data from authors service
 """
 import sqlalchemy
 from bookstore_app.forms.author_form import AuthorForm
@@ -10,7 +10,7 @@ from flask import flash, request
 
 class AuthorsController:
     """
-    This class implements services for authors, used to make database queries
+    This class handles forms based on the data from authors service
     """
     authors_service = AuthorsService()
 

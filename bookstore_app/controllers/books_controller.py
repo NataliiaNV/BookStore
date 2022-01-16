@@ -1,5 +1,5 @@
 """
-This module implements services for books, used to make database queries
+This module handles forms based on the data from books service
 """
 import sqlalchemy
 from bookstore_app.forms.book_form import BookForm
@@ -12,7 +12,7 @@ from datetime import datetime
 
 class BooksController:
     """
-    This class implements services for books, used to make database queries
+    This class handles forms based on the data from books service
     """
     books_service = BooksService()
     authors_service = AuthorsService()
@@ -46,7 +46,6 @@ class BooksController:
                                            form.publish_date.data, form.description.data, form.price.data,
                                            form.rating.data)
 
-                # clear form
                 form.name.data = ""
                 form.author_id.data = ""
                 form.genre_id.data = ""

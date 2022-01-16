@@ -8,6 +8,7 @@ from bookstore_app.controllers.authors_controller import AuthorsController
 
 authors_controller = AuthorsController()
 
+
 @app.route("/authors", methods=["GET", "POST"])
 def authors():
     """

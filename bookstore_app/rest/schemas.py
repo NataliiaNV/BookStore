@@ -5,9 +5,9 @@ from flask_marshmallow.fields import fields
 class GenreSchema(ma.Schema):
     """
     GenreSchema class was made for serializing and deserializing class Genre
-    :param id: id of book genre in db
-    :param name: genre name
-    :param description: genre description
+    id: id of book genre in db
+    name: genre name
+    description: genre description
     """
     id = fields.Int(dump_only=True)
     name = fields.Str()
@@ -17,9 +17,9 @@ class GenreSchema(ma.Schema):
 class AuthorSchema(ma.Schema):
     """
     AuthorSchema class was made for serializing and deserializing class Author
-    :param id: id of author in db
-    :param name: author's name
-    :param birth_date: author's birth date
+    id: id of author in db
+    name: author's name
+    birth_date: author's birth date
     """
     id = fields.Int(dump_only=True)
     name = fields.Str()
@@ -29,13 +29,13 @@ class AuthorSchema(ma.Schema):
 class BookSchema(ma.Schema):
     """
     BookSchema class was made for serializing and deserializing class Book
-    :param id: id of book in db
-    :param name: book name
-    :param author_id: author id
-    :param genre_id: genre id
-    :param description: book description
-    :param price: book price
-    :param rating: book rating
+    id: id of book in db
+    name: book name
+    author_id: author id
+    genre_id: genre id
+    description: book description
+    price: book price
+    rating: book rating
     """
     id = fields.Int(dump_only=True)
     name = fields.Str()

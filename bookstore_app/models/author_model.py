@@ -9,10 +9,10 @@ from bookstore_app.models.book_model import Book
 class Author(db.Model):
     """
     Author object stands for representation data in authors table
-    :param id: id of author in db
-    :param name: author's name
-    :param birth_date: author's birth date
-    :param book_id: book id
+    id: id of author in db
+    name: author's name
+    birth_date: author's birth date
+    book_id: book id
     """
     __tablename__ = "authors"
 

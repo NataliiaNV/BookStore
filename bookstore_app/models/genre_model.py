@@ -9,9 +9,9 @@ from bookstore_app.models.book_model import Book
 class Genre(db.Model):
     """
     Genre object stands for representation data in genres table
-    :param id: id of book genre in db
-    :param name: genre name
-    :param description: genre description
+    id: id of book genre in db
+    name: genre name
+    description: genre description
     """
     __tablename__ = "genres"
 

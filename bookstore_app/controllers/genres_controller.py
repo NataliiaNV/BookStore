@@ -1,5 +1,5 @@
 """
-This module implements services for genres, used to make database queries
+This module handles forms based on the data from genres service
 """
 import sqlalchemy
 from bookstore_app.forms.genre_form import GenreForm
@@ -10,7 +10,7 @@ from flask import flash, request
 
 class GenresController:
     """
-    This class implements services for genres, used to make database queries
+    This class handles forms based on the data from genres service
     """
     genres_service = GenresService()
 

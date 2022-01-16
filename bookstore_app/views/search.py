@@ -13,14 +13,12 @@ from datetime import date, datetime
 book_service = BooksService()
 
 
-# Pass Stuff To Navbar
 @app.context_processor
 def base():
     form = SearchForm()
     return dict(form=form)
 
 
-# Create Search Function
 @app.route("/books/", methods=["POST"])
 def search_books_by_name():
     form = SearchForm()
@@ -54,7 +52,6 @@ def search_books_by_author(id):
 def search_books_by_date():
     form = SearchForm()
     if form.validate_on_submit():
-        # query db
         try:
             books = Book.query.filter(Book.publish_date == datetime.
                                       strptime(form.searched.data, "%Y-%m-%d"))
@@ -77,7 +74,6 @@ def search_books_by_dates():
     if form.validate_on_submit():
 
         try:
-            # query db
             books = Book.query.filter(Book.publish_date >= datetime.strptime(form.searched_1.data, "%Y-%m-%d"))\
                 .filter(Book.publish_date <= datetime.strptime(form.searched_2.data, "%Y-%m-%d"))
 

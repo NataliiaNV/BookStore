@@ -5,6 +5,7 @@ This module implements rendering home page
 from flask import render_template, flash
 from bookstore_app import app
 
+
 @app.route("/")
 @app.route("/home")
 def index():

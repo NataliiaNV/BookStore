@@ -10,8 +10,7 @@ class GenreTests(unittest.TestCase):
         client = app.test_client()
         response = client.get("/")
         statuscode = response.status_code
-        # for rule in app.url_map.iter_rules():
-        #     print(rule)
+
         self.assertEqual(200, statuscode)
 
     def test_edit_genres(self):
@@ -22,7 +21,5 @@ class GenreTests(unittest.TestCase):
         self.assertEqual(200, response.status_code)
 
 
-
 if __name__ == "__main__":
     unittest.main()
-

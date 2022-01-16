@@ -9,7 +9,6 @@ from logging.config import dictConfig
 from logconfig import LOGGING
 
 
-
 dictConfig(LOGGING)
 
 
@@ -23,7 +22,6 @@ ma = Marshmallow(app)
 migrate = Migrate(app, db)
 
 app.config.from_object(Config)
-
 
 
 from bookstore_app.views import home, authors, genres, search, books

@@ -8,13 +8,13 @@ from bookstore_app import db
 class Book(db.Model):
     """
     Book object stands for representation data in books table
-    :param id: id of book in db
-    :param name: book name
-    :param author_id: author id
-    :param genre_id: genre id
-    :param description: book description
-    :param price: book price
-    :param rating: book rating
+    id: id of book in db
+    name: book name
+    author_id: author id
+    genre_id: genre id
+    description: book description
+    price: book price
+    rating: book rating
     """
     __tablename__ = "books"
 
