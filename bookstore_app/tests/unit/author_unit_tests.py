@@ -51,7 +51,7 @@ class AuthorTests(TestCase):
     This class implements tests for authors
     """
 
-    @mock.patch("bookstore_app.service.authors_service.AuthorsService.get_authors")
+    @mock.patch("bookstore_app.controllers.authors_controller.AuthorsController.get_authors")
     def test_authors(self, get_authors):
         """
         Tests get_authors
@@ -65,7 +65,7 @@ class AuthorTests(TestCase):
         self.assertEqual(200, response.status_code)
         get_authors.assert_called_once()
 
-    @mock.patch("bookstore_app.service.authors_service.AuthorsService.add_author")
+    @mock.patch("bookstore_app.controllers.authors_controller.AuthorsController.add_author")
     def test_add_author(self, add_author):
         """
         Tests add_author
@@ -89,7 +89,7 @@ class AuthorTests(TestCase):
         self.assertEqual(add_author_mock_data.name.data, form_name)
         self.assertEqual(add_author_mock_data.birth_date.data, form_birth_date)
 
-    @mock.patch("bookstore_app.service.authors_service.AuthorsService.delete_author")
+    @mock.patch("bookstore_app.controllers.authors_controller.AuthorsController.delete_author")
     def test_delete_author(self, delete_author):
         """
         Tests delete_author
@@ -106,7 +106,7 @@ class AuthorTests(TestCase):
         delete_author.assert_called_once()
         delete_author.assert_called_with(id)
 
-    @mock.patch("bookstore_app.service.authors_service.AuthorsService.update_author")
+    @mock.patch("bookstore_app.controllers.authors_controller.AuthorsController.update_author")
     def test_update_author(self, update_author):
         """
         Tests update_author

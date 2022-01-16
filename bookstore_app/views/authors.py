@@ -4,11 +4,9 @@ This module implements rendering author page
 
 from flask import render_template
 from bookstore_app import app
-from bookstore_app.service.authors_service import AuthorsService
 from bookstore_app.controllers.authors_controller import AuthorsController
 
 authors_controller = AuthorsController()
-authors_service = AuthorsService()
 
 @app.route("/authors", methods=["GET", "POST"])
 def authors():

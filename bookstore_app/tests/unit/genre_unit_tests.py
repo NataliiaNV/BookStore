@@ -49,7 +49,7 @@ class GenreTests(TestCase):
     This class implements tests for genres
     """
 
-    @mock.patch("bookstore_app.service.genres_service.GenresService.get_genres")
+    @mock.patch("bookstore_app.controllers.genres_controller.GenresController.get_genres")
     def test_genres(self, get_genres):
         """
         Tests get_genres
@@ -63,7 +63,7 @@ class GenreTests(TestCase):
         self.assertEqual(200, response.status_code)
         get_genres.assert_called_once()
 
-    @mock.patch("bookstore_app.service.genres_service.GenresService.add_genre")
+    @mock.patch("bookstore_app.controllers.genres_controller.GenresController.add_genre")
     def test_add_genre(self, add_genre):
         """
         Tests add_genre
@@ -86,7 +86,7 @@ class GenreTests(TestCase):
         self.assertEqual(add_genre_mock_data.name.data, form_name)
         self.assertEqual(add_genre_mock_data.description.data, form_description)
 
-    @mock.patch("bookstore_app.service.genres_service.GenresService.delete_genre")
+    @mock.patch("bookstore_app.controllers.genres_controller.GenresController.delete_genre")
     def test_delete_genre(self, delete_genre):
         """
           Tests delete_genre
@@ -103,7 +103,7 @@ class GenreTests(TestCase):
         delete_genre.assert_called_once()
         delete_genre.assert_called_with(id)
 
-    @mock.patch("bookstore_app.service.genres_service.GenresService.update_genre")
+    @mock.patch("bookstore_app.controllers.genres_controller.GenresController.update_genre")
     def test_update_genre(self, update_genre):
         """
         Tests update_genre

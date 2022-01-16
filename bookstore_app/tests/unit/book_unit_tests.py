@@ -65,7 +65,7 @@ class BookTests(TestCase):
     This class implements tests for books
     """
 
-    @mock.patch("bookstore_app.service.books_service.BooksService.get_books")
+    @mock.patch("bookstore_app.controllers.books_controller.BooksController.get_books")
     def test_books(self, get_authors):
         """
         Tests get_books
@@ -79,8 +79,8 @@ class BookTests(TestCase):
         self.assertEqual(200, response.status_code)
         get_authors.assert_called_once()
 
-    @mock.patch("bookstore_app.service.books_service.BooksService.add_book")
-    def test_add_author(self, add_book):
+    @mock.patch("bookstore_app.controllers.books_controller.BooksController.add_book")
+    def test_add_book(self, add_book):
         """
         Tests add_book
         """
@@ -109,10 +109,10 @@ class BookTests(TestCase):
         self.assertEqual(add_book_mock_data.price.data, form_price)
         self.assertEqual(add_book_mock_data.rating.data, form_rating)
 
-    @mock.patch("bookstore_app.service.books_service.BooksService.delete_book")
+    @mock.patch("bookstore_app.controllers.books_controller.BooksController.delete_book")
     def test_delete_book(self, delete_book):
         """
-          Tests delete_book
+        Tests delete_book
         """
         delete_book.side_effect = delete_book_mock
         id = 1
@@ -126,7 +126,7 @@ class BookTests(TestCase):
         delete_book.assert_called_once()
         delete_book.assert_called_with(id)
 
-    @mock.patch("bookstore_app.service.books_service.BooksService.update_book")
+    @mock.patch("bookstore_app.controllers.books_controller.BooksController.update_book")
     def test_update_book(self, update_book):
         """
           Tests update_book

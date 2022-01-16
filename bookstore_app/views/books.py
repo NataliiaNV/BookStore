@@ -4,7 +4,7 @@ This module implements rendering add_book page
 
 from flask import render_template
 from bookstore_app import app
-from bookstore_app.controllers.book_controllers import BooksController
+from bookstore_app.controllers.books_controller import BooksController
 
 
 books_controller = BooksController()
