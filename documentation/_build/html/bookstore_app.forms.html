@@ -1,0 +1,252 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bookstore_app.forms package &#8212; BookStore 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bookstore-app-forms-package">
+<h1>bookstore_app.forms package<a class="headerlink" href="#bookstore-app-forms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bookstore_app.forms.author_form">
+<span id="bookstore-app-forms-author-form-module"></span><h2>bookstore_app.forms.author_form module<a class="headerlink" href="#module-bookstore_app.forms.author_form" title="Permalink to this headline">¶</a></h2>
+<p>This module implements instance of author web form</p>
+<dl class="class">
+<dt id="bookstore_app.forms.author_form.AuthorForm">
+<em class="property">class </em><code class="descclassname">bookstore_app.forms.author_form.</code><code class="descname">AuthorForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bookstore_app.forms.author_form.AuthorForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Custom FlaskForm object for author form.</p>
+<dl class="attribute">
+<dt id="bookstore_app.forms.author_form.AuthorForm.birth_date">
+<code class="descname">birth_date</code><em class="property"> = &lt;UnboundField(StringField, ('Birth date',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.author_form.AuthorForm.birth_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.author_form.AuthorForm.name">
+<code class="descname">name</code><em class="property"> = &lt;UnboundField(StringField, ('Author name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.author_form.AuthorForm.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.author_form.AuthorForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#bookstore_app.forms.author_form.AuthorForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bookstore_app.forms.book_form">
+<span id="bookstore-app-forms-book-form-module"></span><h2>bookstore_app.forms.book_form module<a class="headerlink" href="#module-bookstore_app.forms.book_form" title="Permalink to this headline">¶</a></h2>
+<p>This module implements instance of book web form</p>
+<dl class="class">
+<dt id="bookstore_app.forms.book_form.BookForm">
+<em class="property">class </em><code class="descclassname">bookstore_app.forms.book_form.</code><code class="descname">BookForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Custom FlaskForm object for book form.</p>
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.author_id">
+<code class="descname">author_id</code><em class="property"> = &lt;UnboundField(SelectField, ('Author id',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.author_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.description">
+<code class="descname">description</code><em class="property"> = &lt;UnboundField(StringField, ('Book description',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.genre_id">
+<code class="descname">genre_id</code><em class="property"> = &lt;UnboundField(SelectField, ('Genre id',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.genre_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.name">
+<code class="descname">name</code><em class="property"> = &lt;UnboundField(StringField, ('Book name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.price">
+<code class="descname">price</code><em class="property"> = &lt;UnboundField(StringField, ('Book price',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.publish_date">
+<code class="descname">publish_date</code><em class="property"> = &lt;UnboundField(StringField, ('Publish date',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.publish_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.rating">
+<code class="descname">rating</code><em class="property"> = &lt;UnboundField(StringField, ('Book rating',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.book_form.BookForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#bookstore_app.forms.book_form.BookForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bookstore_app.forms.genre_form">
+<span id="bookstore-app-forms-genre-form-module"></span><h2>bookstore_app.forms.genre_form module<a class="headerlink" href="#module-bookstore_app.forms.genre_form" title="Permalink to this headline">¶</a></h2>
+<p>This module implements instance of genre web form</p>
+<dl class="class">
+<dt id="bookstore_app.forms.genre_form.GenreForm">
+<em class="property">class </em><code class="descclassname">bookstore_app.forms.genre_form.</code><code class="descname">GenreForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bookstore_app.forms.genre_form.GenreForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Custom FlaskForm object for genre form.</p>
+<dl class="attribute">
+<dt id="bookstore_app.forms.genre_form.GenreForm.description">
+<code class="descname">description</code><em class="property"> = &lt;UnboundField(StringField, ('Genre description',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.genre_form.GenreForm.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.genre_form.GenreForm.name">
+<code class="descname">name</code><em class="property"> = &lt;UnboundField(StringField, ('Genre name',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.genre_form.GenreForm.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.genre_form.GenreForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#bookstore_app.forms.genre_form.GenreForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bookstore_app.forms.search_form">
+<span id="bookstore-app-forms-search-form-module"></span><h2>bookstore_app.forms.search_form module<a class="headerlink" href="#module-bookstore_app.forms.search_form" title="Permalink to this headline">¶</a></h2>
+<p>This module implements instance of search web form</p>
+<dl class="class">
+<dt id="bookstore_app.forms.search_form.RangeSearchForm">
+<em class="property">class </em><code class="descclassname">bookstore_app.forms.search_form.</code><code class="descname">RangeSearchForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bookstore_app.forms.search_form.RangeSearchForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Custom FlaskForm object for search form by dates range.</p>
+<dl class="attribute">
+<dt id="bookstore_app.forms.search_form.RangeSearchForm.searched_1">
+<code class="descname">searched_1</code><em class="property"> = &lt;UnboundField(StringField, ('Searched',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.search_form.RangeSearchForm.searched_1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.search_form.RangeSearchForm.searched_2">
+<code class="descname">searched_2</code><em class="property"> = &lt;UnboundField(StringField, ('Searched',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.search_form.RangeSearchForm.searched_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.search_form.RangeSearchForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#bookstore_app.forms.search_form.RangeSearchForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bookstore_app.forms.search_form.SearchForm">
+<em class="property">class </em><code class="descclassname">bookstore_app.forms.search_form.</code><code class="descname">SearchForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bookstore_app.forms.search_form.SearchForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Custom FlaskForm object for search form.</p>
+<dl class="attribute">
+<dt id="bookstore_app.forms.search_form.SearchForm.searched">
+<code class="descname">searched</code><em class="property"> = &lt;UnboundField(StringField, ('Searched',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#bookstore_app.forms.search_form.SearchForm.searched" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bookstore_app.forms.search_form.SearchForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#bookstore_app.forms.search_form.SearchForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bookstore_app.forms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bookstore_app.forms" title="Permalink to this headline">¶</a></h2>
+<p>This package contains modules defining author,book,genre and search  forms</p>
+<p>Modules:</p>
+<ul class="simple">
+<li><cite>author_form.py</cite>: defines author form</li>
+<li><cite>book_form.py</cite>: defines book form</li>
+<li><cite>genre_form.py</cite>: defines genre form</li>
+<li><cite>search_form.py</cite>: defines search form</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BookStore</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Nataliia Kaptur.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/bookstore_app.forms.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
