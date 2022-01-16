@@ -9,6 +9,7 @@ from bookstore_app.service.authors_service import AuthorsService
 from flask import flash, request
 from datetime import datetime
 
+
 class BooksController:
     """
     This class implements services for books, used to make database queries
@@ -21,7 +22,6 @@ class BooksController:
     def get_books(cls):
         """
         Fetches all books from database
-        :param books: get books from db
         :return: books
         """
         books = cls.books_service.get_books_api()
@@ -31,8 +31,7 @@ class BooksController:
     def add_book(cls):
         """
         Add new book to database
-        :param form: form for posting new book's data
-        :return: form
+        :return: form for posting new book's data
         """
         form = BookForm()
         form.genre_id.choices = [(row.id, row.name) for row in cls.genres_service.get_genres()]
@@ -67,7 +66,7 @@ class BooksController:
     def delete_book(cls, id):
         """
         Delete book by id, and fetches other books from database
-        :param book_to_delete: book that we want to delete (get by id)
+        :param id: book id
         :return: all books in the database, except which we delete
         """
         try:
@@ -81,9 +80,8 @@ class BooksController:
     @classmethod
     def update_book(cls, id):
         """
-        Update genre by id
-        :param form: form for updating genre's data
-        :param genre_to_update: genre that we want to update(get by id)
+        Update book by id
+        :param id: book id
         :return: form with fields for update, genre for update
         """
         form = BookForm()
@@ -99,12 +97,17 @@ class BooksController:
         form.author_id.choices.insert(0, form.author_id.choices.pop(auth_ind))
 
         if request.method == "POST":
+
             try:
-                cls.books_service.update_book(id, form.name.data, form.author_id.data, form.genre_id.data,
-                                              form.publish_date.data, form.description.data, form.price.data,
-                                              form.rating.data)
-                flash("Book updated successfully!")
-                return form, book_to_update
+                if datetime.strptime(form.publish_date.data, "%Y-%m-%d") > datetime.today():
+                    flash("Please choose the correct date!")
+                    return form, book_to_update
+                else:
+                    cls.books_service.update_book(id, form.name.data, form.author_id.data, form.genre_id.data,
+                                                  form.publish_date.data, form.description.data, form.price.data,
+                                                  form.rating.data)
+                    flash("Book updated successfully!")
+                    return form, book_to_update
             except:
                 flash("Error! Looks like there was a problem! Try again...")
                 return form, book_to_update

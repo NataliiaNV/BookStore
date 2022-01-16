@@ -17,7 +17,6 @@ class GenresController:
     def get_genres(cls):
         """
         Fetches all genres from database
-        :param genres: get genres from db
         :return: genres
         """
         genres = cls.genres_service.get_genres()
@@ -27,7 +26,6 @@ class GenresController:
     def add_genre(cls):
         """
         Add new genre to database
-        :param form: form for posting new genre's data
         :return: form
         """
         form = GenreForm()
@@ -51,7 +49,7 @@ class GenresController:
     def delete_genre(cls, id):
         """
         Delete genre by id, and fetches other genres from database
-        :param genre_to_delete: genre that we want to delete (get by id)
+        :param id: genre id
         :return: all genres in the database, except which we delete
         """
         try:
@@ -70,8 +68,7 @@ class GenresController:
     def update_genre(cls, id):
         """
         Update genre by id
-        :param form: form for updating genre's data
-        :param genre_to_update: genre that we want to update(get by id)
+        :param id: genre id
         :return: form with fields for update, genre for update
         """
         form = GenreForm()

@@ -18,7 +18,6 @@ class AuthorsController:
     def get_authors(cls):
         """
         Fetches all authors from database
-        :param authors: get authors from db
         :return: genres
         """
         authors, avg_rate = cls.authors_service.get_authors()
@@ -28,7 +27,6 @@ class AuthorsController:
     def add_author(cls):
         """
         Add new author to database
-        :param form: form for posting new author's data
         :return: form
         """
         form = AuthorForm()
@@ -50,7 +48,7 @@ class AuthorsController:
     def delete_author(cls, id):
         """
         Delete author by id, and fetches other authors from database
-        :param author_to_delete: author that we want to delete (get by id)
+        :param id: author id
         :return: all authors in the database, except which we delete
         """
         try:
@@ -69,8 +67,7 @@ class AuthorsController:
     def update_author(cls, id):
         """
         Update author by id
-        :param form: form for updating author's data
-        :param author_to_update: author that we want to update(get by id)
+        :param id: author id
         :return: form with fields for update, author for update
         """
         form = AuthorForm()

@@ -26,7 +26,7 @@ genres_schema = GenreSchema(many=True)
 
 
 @api.route('/genres', methods=['GET'])
-def get_genres() -> dict:
+def get_genres():
     """
     Fetches all genres.
     :return: dict
@@ -36,7 +36,7 @@ def get_genres() -> dict:
 
 
 @api.route('/genres', methods=['POST'])
-def add_genre() -> dict:
+def add_genre():
     """
     Add new genre to database. Return new genre in json format.
     :return: dict
@@ -88,7 +88,7 @@ def update_genre(id):
 
 
 @api.route('/authors', methods=['GET'])
-def get_authors() -> dict:
+def get_authors():
     """
     Fetches all authors.
     :return: dict
@@ -98,7 +98,7 @@ def get_authors() -> dict:
 
 
 @api.route('/authors', methods=['POST'])
-def add_author() -> dict:
+def add_author():
     """
     Add new author to database. Return new author in json format.
     :return: dict
@@ -151,7 +151,7 @@ def update_author(id):
 
 
 @api.route('/books', methods=['GET'])
-def get_books() -> dict:
+def get_books():
     """
     Fetches all books.
     :return: dict

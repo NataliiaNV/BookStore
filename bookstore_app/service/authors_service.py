@@ -17,7 +17,6 @@ class AuthorsService:
     def __avg_rate(cls):
         """
         Calculate avg_rate rating for authors based on theirs books
-        :param avg_rate: rating for authors based on theirs books
         :return: avg_rate
         """
         avg_rate = db.session.query(Author.id, db.func.round(db.func.avg(Book.rating), 2)). \
@@ -29,7 +28,7 @@ class AuthorsService:
     def get_author(cls, id):
         """
         Fetches specific genre from database
-        :param author: get author from db
+        :param id: author id
         :return: author
         """
         author = Author.query.get_or_404(id)
@@ -40,7 +39,6 @@ class AuthorsService:
     def get_authors(cls):
         """
         Fetches all authors from database and paging it
-        :param avg_rate: rating for authors based on theirs books
         :return: list of all authors, dict(avg_rate)
         """
         avg_rate = cls.__avg_rate()
@@ -52,8 +50,9 @@ class AuthorsService:
     def add_author(cls, name, birth_date):
         """
         Add new author to database
-        :param form: form for posting new author's data
-        :return: form
+        :param name: author name
+        :param birth_date: author's birth date
+        :return: None
         """
 
         new_auth = Author(name=name, birth_date=birth_date)
@@ -83,9 +82,10 @@ class AuthorsService:
     def update_author(cls, id, name, birth_date):
         """
         Update author by id
-        :param form: form for updating author's data
-        :param author_to_update: author that we want to update(get by id)
-        :return: form with fields for update, author for update
+        :param id: author id
+        :param name: author name
+        :param birth_date: author birth date
+        :return: None
         """
 
         author_to_update = Author.query.get_or_404(id)

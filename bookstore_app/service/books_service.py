@@ -17,7 +17,6 @@ class BooksService:
     def get_books(cls):
         """
         Fetches all books from database
-        :param our_books: get books from db
         :return: our_books
         """
         our_books = Book.query.join(Genre, Genre.id == Book.genre_id). \
@@ -32,7 +31,6 @@ class BooksService:
     def get_books_api(cls):
         """
         Fetches all books from database
-        :param our_books: get books from db
         :return: our_books
         """
         books = Book.query.all()
@@ -43,7 +41,7 @@ class BooksService:
     def get_book(cls, id):
         """
         Fetches book from database
-        :param our_book: get book from db by id
+        :param id: book id
         :return: our_book
         """
         our_book = Book.query.get_or_404(id)
@@ -78,7 +76,7 @@ class BooksService:
     def delete_book(cls, id):
         """
         Delete author by id, and fetches other authors from database and paging it
-        :param book_to_delete: book that we want to delete (get by id)
+        :param id: book id
         :return: all books in the database, except which we delete
         """
         book_to_delete = Book.query.get_or_404(id)
@@ -90,9 +88,16 @@ class BooksService:
     def update_book(cls, id, name, author_id, genre_id, publish_date, description, price, rating):
         """
         Update book by id
-        :param form: form for updating book"s data
+        :param id: book id
+        :param name: book name
+        :param author_id: author id
+        :param genre_id: genre id
+        :param publish_date: publish date
+        :param description: book description
+        :param price: book price
+        :param rating: bookrating
         :param book_to_update: book that we want to update(get by id)
-        :return: form with fields for update, book for update
+        :return: None
         """
         book_to_update = Book.query.get_or_404(id)
 

@@ -16,7 +16,7 @@ class GenresService:
     def get_genre(cls, id):
         """
         Fetches specific genre from database
-        :param genres: get genres from db
+        :param id: genre id
         :return: genres
         """
         genre = Genre.query.get_or_404(id)
@@ -26,8 +26,7 @@ class GenresService:
     def get_genres(cls):
         """
         Fetches all genres from database
-        :param genre: get genre from db
-        :return:
+        :return: genres
         """
         genres = Genre.query.order_by(Genre.id).all()
         return genres
@@ -48,8 +47,8 @@ class GenresService:
     def delete_genre(cls, id):
         """
         Delete genre by id, and fetches other genres from database
-        :param genre_to_delete: genre that we want to delete (get by id)
-        :return: all genres in the database, except which we delete
+        :param id: genre id
+        :return: None
         """
         genre_to_delete = Genre.query.get_or_404(id)
 
@@ -66,9 +65,10 @@ class GenresService:
     def update_genre(cls, id, name, description):
         """
         Update genre by id
-        :param form: form for updating genre's data
-        :param genre_to_update: genre that we want to update(get by id)
-        :return: form with fields for update, genre for update
+        :param id: genre id
+        :param name: genre name
+        :param description: genre description
+        :return: None
         """
         genre_to_update = Genre.query.get_or_404(id)
 
