@@ -8,10 +8,10 @@ from bookstore_app.models.book_model import Book
 
 class Author(db.Model):
     """
-    Genre object stands for representation data in authors table
+    Author object stands for representation data in authors table
     :param id: id of author in db
-    :param name: author name
-    :param birth_date: genre description
+    :param name: author's name
+    :param birth_date: author's birth date
     :param book_id: book id
     """
     __tablename__ = "authors"
@@ -24,7 +24,6 @@ class Author(db.Model):
     def __init__(self, name, birth_date):
         self.name = name
         self.birth_date = birth_date
-
 
     def __repr__(self):
         """

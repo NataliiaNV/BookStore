@@ -1,17 +1,11 @@
 """
 This module implements services for books, used to make database queries
 """
-
-
-import sqlalchemy
-
 from bookstore_app import db
-from flask import flash, request
-from bookstore_app.forms.book_form import BookForm
 from bookstore_app.models.book_model import Book
 from bookstore_app.models.genre_model import Genre
 from bookstore_app.models.author_model import Author
-from datetime import datetime
+from bookstore_app.service.genres_service import DependencyError
 
 
 class BooksService:
@@ -29,58 +23,56 @@ class BooksService:
         our_books = Book.query.join(Genre, Genre.id == Book.genre_id). \
             join(Author, Author.id == Book.author_id) \
             .add_columns(Book.id, Book.name, Book.author_id, Book.rating,
-                         Book.price, Author.name.label("author_name"),
-                         Book.description, Book.publish_date, Genre.name.label("genres_name"))
+                         Book.price, Book.author_id, Book.genre_id, Book.description,
+                         Book.publish_date, Genre.name.label("genres_name"), Author.name.label("author_name"))
 
         return our_books
 
+    @classmethod
+    def get_books_api(cls):
+        """
+        Fetches all books from database
+        :param our_books: get books from db
+        :return: our_books
+        """
+        books = Book.query.all()
 
-
+        return books
 
     @classmethod
-    def add_book(cls):
+    def get_book(cls, id):
+        """
+        Fetches book from database
+        :param our_book: get book from db by id
+        :return: our_book
+        """
+        our_book = Book.query.get_or_404(id)
+
+        return our_book
+
+    @classmethod
+    def add_book(cls, name, author_id, genre_id, publish_date, description, price, rating):
         """
         Add new book to database
-        :param form: form for posting new book"s data
+        :param name: book name
+        :param author_id: author id
+        :param genre_id:  genre id
+        :param publish_date: publish date
+        :param description: description
+        :param price: book's price
+        :param rating: book's rating
         :return: form
         """
-        form = BookForm()
-        form.genre_id.choices = [(row.id, row.name) for row in Genre.query.all()]
-        form.author_id.choices = [(row.id, row.name) for row in Author.query.all()]
-        try:
-            if form.name.data is None or form.name.data == "":
-                flash("Fill in the data please!")
-            elif datetime.strptime(form.publish_date.data, "%Y-%m-%d") > datetime.today():
-                flash("Please choose the correct date!")
-            elif form.validate_on_submit():
-                new_book = Book(name=form.name.data,
-                                author_id=form.author_id.data,
-
-                                genre_id=form.genre_id.data,
-                                publish_date=form.publish_date.data,
-                                description=form.description.data,
-                                price=form.price.data,
-                                rating=form.rating.data)
-
-                db.session.add(new_book)
-                db.session.commit()
-
-                # clear form
-                form.name.data = ""
-                form.author_id.data = ""
-                form.genre_id.data = ""
-                form.publish_date.data = ""
-                form.description.data = ""
-                form.price.data = ""
-                form.rating.data = ""
-
-                flash("Book added successfuly!")
-        except sqlalchemy.exc.IntegrityError:
-            flash("Check please your data!")
-        except sqlalchemy.exc.OperationalError:
-            flash("Check formats please!")
-
-        return form
+        new_book = Book(name=name,
+                        author_id=author_id,
+                        genre_id=genre_id,
+                        publish_date=publish_date,
+                        description=description,
+                        price=price,
+                        rating=rating)
+        db.session.add(new_book)
+        db.session.commit()
+        return None
 
     @classmethod
     def delete_book(cls, id):
@@ -89,54 +81,40 @@ class BooksService:
         :param book_to_delete: book that we want to delete (get by id)
         :return: all books in the database, except which we delete
         """
-
         book_to_delete = Book.query.get_or_404(id)
-
-        try:
-            db.session.delete(book_to_delete)
-            db.session.commit()
-            flash("Book deleted successfully!")
-
-            our_books = cls.get_books()
-
-            return our_books
-        except:
-            flash("Oops! There was a problem with deleting book, try again...")
-            return our_books
+        db.session.delete(book_to_delete)
+        db.session.commit()
+        return None
 
     @classmethod
-    def update_book(cls, id):
+    def update_book(cls, id, name, author_id, genre_id, publish_date, description, price, rating):
         """
         Update book by id
         :param form: form for updating book"s data
         :param book_to_update: book that we want to update(get by id)
         :return: form with fields for update, book for update
         """
-        form = BookForm()
         book_to_update = Book.query.get_or_404(id)
-        form.genre_id.choices = [(row.id, row.name) for row in Genre.query.all()]
-        form.author_id.choices = [(row.id, row.name) for row in Author.query.all()]
 
-        genr_ind = [choice[0] for choice in form.genre_id.choices].index(book_to_update.genre_id)
-        form.genre_id.choices.insert(0, form.genre_id.choices.pop(genr_ind))
+        if name:
+            book_to_update.name = name
+        if author_id:
+            book_to_update.author_id = author_id
+        if genre_id:
+            book_to_update.genre_id = genre_id
+        if publish_date:
+            book_to_update.publish_date = publish_date
+        if description:
+            book_to_update.description = description
+        if price:
+            book_to_update.price = price
+        if rating:
+            book_to_update.rating = rating
 
-        auth_ind = [choice[0] for choice in form.author_id.choices].index(book_to_update.author_id)
-        form.author_id.choices.insert(0, form.author_id.choices.pop(auth_ind))
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise DependencyError
 
-        if request.method == "POST":
-            book_to_update.name = request.form["name"]
-            book_to_update.author_id = request.form["author_id"]
-            book_to_update.genre_id = request.form["genre_id"]
-            book_to_update.publish_date = request.form["publish_date"]
-            book_to_update.description = request.form["description"]
-            book_to_update.price = request.form["price"]
-            book_to_update.rating = request.form["rating"]
-            try:
-                db.session.commit()
-                flash("Book updated successfuly!")
-                return form, book_to_update
-            except:
-                flash("Error! Looks like there was a problem! Try again...")
-                return form, book_to_update
-        else:
-            return form, book_to_update
+        return None

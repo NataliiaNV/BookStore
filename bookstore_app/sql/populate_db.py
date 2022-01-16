@@ -68,7 +68,7 @@ def populate_database():
                               "million copies sold, and has inspired many derivatives in modern literature",
                   price=550, rating=9.3)
 
-    book_6 = Book(name='Delaney’s Desert Sheikh', author_id=4, genre_id=2, publish_date=date(2002, 2, 1),
+    book_6 = Book(name='Delaney\'s Desert Sheikh', author_id=4, genre_id=2, publish_date=date(2002, 2, 1),
                   description="After graduating medical school, Delaney sets off for an escape at her "
                               "cousin's luxurious secluded cabin. But it turns out she's not staying "
                               "there alone, as it's also occupied by a gorgeous stranger named Jamal—who "

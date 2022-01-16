@@ -4,10 +4,10 @@ This module implements rendering add_book page
 
 from flask import render_template
 from bookstore_app import app
-from bookstore_app.service.books_service import BooksService
+from bookstore_app.controllers.book_controllers import BooksController
 
 
-books_service = BooksService()
+books_controller = BooksController()
 
 
 @app.route("/books", methods=["GET"])
@@ -19,7 +19,7 @@ def books():
     :return: rendered `books.html` template
     """
 
-    our_books = books_service.get_books()
+    our_books = books_controller.get_books()
     return render_template("books.html", books=our_books)
 
 
@@ -31,7 +31,7 @@ def add_book():
 
     :return: rendered `add_book.html` template
     """
-    form = books_service.add_book()
+    form = books_controller.add_book()
     return render_template("add_book.html", form=form)
 
 
@@ -43,7 +43,7 @@ def delete_book(id):
 
     :return: rendered `books.html` template
     """
-    our_books = books_service.delete_book(id)
+    our_books = books_controller.delete_book(id)
 
     return render_template("books.html",
                            books=our_books)
@@ -57,7 +57,7 @@ def update_book(id):
 
     :return: rendered `update_book.html` template
     """
-    form, book_to_update = books_service.update_book(id)
+    form, book_to_update = books_controller.update_book(id)
     return render_template("update_book.html",
                            form=form, book_to_update=book_to_update, id=id)
 

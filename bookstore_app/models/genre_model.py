@@ -30,5 +30,3 @@ class Genre(db.Model):
         :return: string with genre id, name, description
         """
         return f"Genre(id: {self.id}, name: {self.name}, description: {self.description})"
-
-

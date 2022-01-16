@@ -7,7 +7,7 @@ from bookstore_app import db
 
 class Book(db.Model):
     """
-    Genre object stands for representation data in books table
+    Book object stands for representation data in books table
     :param id: id of book in db
     :param name: book name
     :param author_id: author id
@@ -39,11 +39,8 @@ class Book(db.Model):
 
     def __repr__(self):
         """
-        Method gives representation of genres
+        Method gives representation of books
         :return: string with book id, name,author_id,genre_id, publish_date, description, price, rating
         """
         return f"Book(id: {self.id}, name: {self.name}, author_id: {self.author_id}, genre_id: {self.genre_id}," \
                f" publish_date: {self.publish_date}, description: {self.description}, price: {self.price}, rating: {self.rating})"
-
-
-

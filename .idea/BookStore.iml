@@ -7,4 +7,11 @@
     <orderEntry type="jdk" jdkName="Python 3.8 (BookStore)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyNamespacePackagesService">
+    <option name="namespacePackageFolders">
+      <list>
+        <option value="$MODULE_DIR$/bookstore_app/sql" />
+      </list>
+    </option>
+  </component>
 </module>

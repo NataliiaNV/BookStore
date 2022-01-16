@@ -8,6 +8,7 @@ scripts:
   - python -m unittest bookstore_app.tests.unit.genre_unit_tests
   - python -m unittest bookstore_app.tests.unit.author_unit_tests
   - python -m unittest bookstore_app.tests.unit.book_unit_tests
+  - coverage run -m unittest
 notifications:
   email:
     reciplients:

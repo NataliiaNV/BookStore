@@ -4,10 +4,10 @@ This module implements rendering  genre page
 
 from flask import render_template
 from bookstore_app import app
-from bookstore_app.service.genres_service import GenresService
+from bookstore_app.controllers.genres_controller import GenresController
 
-genres_service = GenresService()
 
+genres_controller = GenresController()
 
 @app.route("/genres", methods=["GET"])
 def genres():
@@ -17,7 +17,7 @@ def genres():
 
     :return: rendered `genres.html` template
     """
-    genres = genres_service.get_genres()
+    genres = genres_controller.get_genres()
     return render_template("genres.html", genres=genres)
 
 
@@ -29,7 +29,7 @@ def add_genre():
 
     :return: rendered `add_genre.html` template
     """
-    form = genres_service.add_genre()
+    form = genres_controller.add_genre()
     return render_template("add_genre.html", form=form)
 
 
@@ -41,7 +41,7 @@ def delete_genre(id):
 
     :return: rendered `genres.html` template
     """
-    genres = genres_service.delete_genre(id)
+    genres = genres_controller.delete_genre(id)
     return render_template("genres.html", genres=genres)
 
 
@@ -53,6 +53,6 @@ def update_genre(id):
 
     :return: rendered `update_genre.html` template
     """
-    form, genre_to_update = genres_service.update_genre(id)
+    form, genre_to_update = genres_controller.update_genre(id)
     return render_template("update_genre.html",
                            form=form, genre_to_update=genre_to_update, id=id)
