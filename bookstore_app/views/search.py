@@ -2,7 +2,7 @@
 from flask import render_template, redirect, url_for, flash
 from bookstore_app import app
 
-from bookstore_app.forms.search_form import SearchForm, RangeSearchForm
+from bookstore_app.forms.search_form import SearchForm, RangeSearchForm, SearchDateForm
 
 from bookstore_app.models.book_model import Book
 from bookstore_app.models.genre_model import Genre
@@ -23,7 +23,7 @@ def base():
 def search_books_by_name():
     form = SearchForm()
     if form.validate_on_submit():
-        # query db
+
         books = Book.query.filter(Book.name.like("%" + form.searched.data + "%"))
         return render_template("books.html", form=form,
                                searched=form.searched.data, books=books)
@@ -50,13 +50,13 @@ def search_books_by_author(id):
 
 @app.route("/books/date", methods=["POST"])
 def search_books_by_date():
-    form = SearchForm()
+    form = SearchDateForm()
     if form.validate_on_submit():
         try:
             books = Book.query.filter(Book.publish_date == datetime.
-                                      strptime(form.searched.data, "%Y-%m-%d"))
+                                      strptime(form.date_searched.data, "%Y-%m-%d"))
             return render_template("books.html", form=form,
-                                   searched=form.searched.data, books=books)
+                                   searched=form.date_searched.data, books=books)
         except ValueError:
             flash("Check your data please")
             return redirect(url_for("books"))

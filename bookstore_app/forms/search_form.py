@@ -15,6 +15,14 @@ class SearchForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
+class SearchDateForm(FlaskForm):
+    """
+    Custom FlaskForm object for search form.
+    """
+    date_searched = StringField("Searched", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+
+
 class RangeSearchForm(FlaskForm):
     """
     Custom FlaskForm object for search form by dates range.

@@ -14,8 +14,8 @@
     	<h1 align="center">Books <a href=" {{ url_for('add_book') }}" class="btn btn-outline-secondary brn-sm" >Add Book</a>
                 <form class="d-flex" method="POST" action="{{ url_for('search_books_by_dates') }}" >
                     {{ form.hidden_tag() }}
-                    <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched_1" >
-                    <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched_2" >
+                    <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched_1" value="{{ request.form['searched_1'] }}">
+                    <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched_2" value="{{ request.form['searched_2'] }}">
                     <button class="btn btn-outline-secondary brn-sm" type="submit" >Range Search</button>
                 </form>
         </h1>
@@ -31,7 +31,7 @@
             <td class="rightcol" nowrap>  <h5> Publish Date </h5>
                 <form class="flex flex-column flex-row@xs gap-xs" method="POST" action="{{ url_for('search_books_by_date') }}" >
                     {{ form.hidden_tag() }}
-                    <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="searched" >
+                    <input class="form-control me-2" type="search" placeholder="yyyy-mm-dd" aria-label="Search" name="date_searched" value="{{ request.form['date_searched'] }}">
                     <button class="btn btn--subtle" type="submit" >Search</button>
                 </form>
              </td>

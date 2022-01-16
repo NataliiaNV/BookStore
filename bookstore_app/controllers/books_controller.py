@@ -24,7 +24,7 @@ class BooksController:
         Fetches all books from database
         :return: books
         """
-        books = cls.books_service.get_books_api()
+        books = cls.books_service.get_books()
         return books
 
     @classmethod
