@@ -3,6 +3,7 @@ This module implements services for genres, used to make database queries
 """
 
 
+from bookstore_app.service.dependency_error import DependencyError
 from bookstore_app.models.genre_model import Genre
 from bookstore_app.models.book_model import Book
 from bookstore_app import db
@@ -83,8 +84,3 @@ class GenresService:
             raise DependencyError
 
         return None
-
-
-class DependencyError(Exception):
-    """Raised when there are dependencies which prevent entity from being deleted"""
-    pass

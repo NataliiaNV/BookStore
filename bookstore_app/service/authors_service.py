@@ -5,7 +5,7 @@ This module implements services for author, used to make database queries
 from bookstore_app import db
 from bookstore_app.models.author_model import Author
 from bookstore_app.models.book_model import Book
-from bookstore_app.service.genres_service import DependencyError
+from bookstore_app.service.dependency_error import DependencyError
 
 
 class AuthorsService:

@@ -4,7 +4,7 @@ This module implements services for authors, used to make database queries
 import sqlalchemy
 from bookstore_app.forms.author_form import AuthorForm
 from bookstore_app.service.authors_service import AuthorsService
-from bookstore_app.service.genres_service import DependencyError
+from bookstore_app.service.dependency_error import DependencyError
 from flask import flash, request
 
 

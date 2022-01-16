@@ -3,7 +3,8 @@ This module implements services for genres, used to make database queries
 """
 import sqlalchemy
 from bookstore_app.forms.genre_form import GenreForm
-from bookstore_app.service.genres_service import GenresService, DependencyError
+from bookstore_app.service.genres_service import GenresService
+from bookstore_app.service.dependency_error import DependencyError
 from flask import flash, request
 
 

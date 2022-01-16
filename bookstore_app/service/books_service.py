@@ -5,7 +5,6 @@ from bookstore_app import db
 from bookstore_app.models.book_model import Book
 from bookstore_app.models.genre_model import Genre
 from bookstore_app.models.author_model import Author
-from bookstore_app.service.genres_service import DependencyError
 
 
 class BooksService:
@@ -120,6 +119,6 @@ class BooksService:
             db.session.commit()
         except:
             db.session.rollback()
-            raise DependencyError
+            raise Exception
 
         return None

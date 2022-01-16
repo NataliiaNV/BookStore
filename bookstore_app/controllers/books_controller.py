@@ -4,7 +4,7 @@ This module implements services for books, used to make database queries
 import sqlalchemy
 from bookstore_app.forms.book_form import BookForm
 from bookstore_app.service.books_service import BooksService
-from bookstore_app.service.genres_service import GenresService, DependencyError
+from bookstore_app.service.genres_service import GenresService
 from bookstore_app.service.authors_service import AuthorsService
 from flask import flash, request
 from datetime import datetime
